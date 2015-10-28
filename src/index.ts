@@ -1,5 +1,2 @@
 'use strict';
-export function hello(): string {
-  'use strict';
-  return 'world';
-}
+export * from './deep-key-mirror';
