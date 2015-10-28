@@ -17,7 +17,7 @@
     "istanbul:watch": "istanbul cover node_modules/.bin/_mocha -- --compilers ts:espower-typescript/guess test/*.spec.ts -w",
     "codeclimate": "codeclimate-test-reporter < coverage/lcov.info",
     "lint": "tslint -c tslint.json test/*.ts src/*.ts",
-    "docs": "typedoc --out docs --module commonjs --disableOutputCheck --exclude '**/index.ts' src/",
+    "docs": "typedoc --out docs --module commonjs --disableOutputCheck --exclude '**/index.ts' --includeDeclarations typings/ src/",
     "prepublish": "npm run build"
   },
   "repository": {
@@ -49,5 +49,8 @@
     "tslint": "^2.5.1",
     "typedoc": "^0.3.12",
     "typescript": "^1.6.2"
+  },
+  "dependencies": {
+    "lodash": "^3.10.1"
   }
 }
