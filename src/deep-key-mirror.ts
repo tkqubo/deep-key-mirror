@@ -14,8 +14,7 @@ export function deepKeyMirror(obj: any): any {
 
   Object.keys(obj)
     .filter((prop: string) => {
-      let value = obj[prop];
-      return value === null || value === undefined;
+      return obj.hasOwnProperty(prop) && (obj[prop] === null || obj[prop] === undefined);
     })
     .forEach((prop: string) => obj[prop] = prop);
   return obj;

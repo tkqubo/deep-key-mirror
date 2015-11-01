@@ -4,6 +4,12 @@ import { deepKeyMirror } from '../src/index';
 
 // not an object nor an array
 describe('deepKeyMirror', () => {
+  it('does nothing when null or undefined is passed as an argument', () => {
+    let nv: any = null;
+    assert(deepKeyMirror(nv) === null);
+    let uv: any = undefined;
+    assert(deepKeyMirror(uv) === undefined);
+  });
   it('does nothing when an empty object is passed as an argument', () => {
     let obj = {};
     assert(deepKeyMirror(obj) === obj);
@@ -23,5 +29,18 @@ describe('deepKeyMirror', () => {
   it('does nothing when a function is passed as an argument', () => {
     let func = () => 3;
     assert(deepKeyMirror(func) === func);
+  });
+
+  describe('with an object which should be processed', () => {
+    it('supplies key name itself to its value', () => {
+      let obj: any = { name: null, action: undefined };
+      assert(deepKeyMirror(obj).name === 'name');
+      assert(deepKeyMirror(obj).action === 'action');
+    });
+    it('does nothing when value is not null nor undefined', () => {
+      let obj: any = { name: 'some name', action: null };
+      assert(deepKeyMirror(obj).name === 'some name');
+      assert(deepKeyMirror(obj).action === 'action');
+    });
   });
 });
