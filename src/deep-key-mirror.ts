@@ -45,9 +45,9 @@ export const DefaultConfig: Config = {
  * @param config
  * @returns {any}
  */
-export default function deepKeyMirror( obj: any, config: Config = DefaultConfig): any {
+export default function deepKeyMirror( obj: any, config?: Config): any {
   'use strict';
-  return new DeepKeyMirror(config).deepKeyMirror(obj);
+  return new DeepKeyMirror(_.assign({}, DefaultConfig, config)).deepKeyMirror(obj);
 }
 
 export class DeepKeyMirror {

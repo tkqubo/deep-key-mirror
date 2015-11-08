@@ -122,3 +122,96 @@ describe('deepKeyMirror', () => {
     });
   });
 });
+
+describe('Config', () => {
+  describe('.prependKeyPath', () => {
+    it('doesn\'t prepend key path whtn set to false', () => {
+      let expected: any = {
+        value: 'const',
+        nested: {
+          value: 'nested_const',
+          yetNested: {
+            value: 'yetNested_const'
+          }
+        }
+      };
+      let actual = deepKeyMirror(expected, { prependKeyPath: false });
+      assert.deepEqual(actual, expected);
+    });
+    it('prepends key path when set to true', () => {
+      let expected: any = {
+        value: 'const',
+        nested: {
+          value: 'nested.nested_const',
+          yetNested: {
+            value: 'nested.yetNested.yetNested_const'
+          }
+        }
+      };
+      let actual = deepKeyMirror(
+        {
+          value: 'const',
+          nested: {
+            value: 'nested_const',
+            yetNested: {
+              value: 'yetNested_const'
+            }
+          }
+        },
+        { prependKeyPath: true });
+      assert.deepEqual(actual, expected);
+    });
+  });
+
+  describe('.keyJoinString', () => {
+    it('join key path with "_" with set to "_"', () => {
+      let expected: any = {
+        value: 'const',
+        nested: {
+          value: 'nested_nested_const',
+          yetNested: {
+            value: 'nested_yetNested_yetNested_const'
+          }
+        }
+      };
+      let actual = deepKeyMirror(
+        {
+          value: 'const',
+          nested: {
+            value: 'nested_const',
+            yetNested: {
+              value: 'yetNested_const'
+            }
+          }
+        },
+        { keyJoinString: '_' });
+      assert.deepEqual(actual, expected);
+    });
+  });
+
+  describe('.makeUpperCase', () => {
+    it('makes key upper case when set to true', () => {
+      let expected: any = {
+        value: 'CONST',
+        nested: {
+          value: 'NESTED.NESTED_CONST',
+          yetNested: {
+            value: 'NESTED.YETNESTED.YETNESTED_CONST'
+          }
+        }
+      };
+      let actual = deepKeyMirror(
+        {
+          value: 'const',
+          nested: {
+            value: 'nested_const',
+            yetNested: {
+              value: 'yetNested_const'
+            }
+          }
+        },
+        { makeUpperCase: true });
+      assert.deepEqual(actual, expected);
+    });
+  });
+});
