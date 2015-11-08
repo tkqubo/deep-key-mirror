@@ -1,4 +1,5 @@
 'use strict';
+import * as _ from 'lodash';
 
 export function deepKeyMirror(obj: any): any {
   'use strict';
@@ -9,7 +10,16 @@ export function deepKeyMirror(obj: any): any {
     return obj;
   }
   if (obj instanceof Array) {
-    return obj;
+    // todo: reject an item that is not the type `string` nor `number`
+    return _.reduce(
+      obj,
+      (mirrored: any, prop: any) =>
+        Object.defineProperty(mirrored, prop, {
+          value: prop.toString(),
+          writable: true,
+          configurable: true
+        }),
+      {} as any);
   }
 
   Object.keys(obj)

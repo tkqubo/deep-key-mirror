@@ -1,6 +1,7 @@
 'use strict';
+
 import assert from 'power-assert';
-import { deepKeyMirror } from '../src/index';
+import { deepKeyMirror } from '../src/deep-key-mirror';
 
 // not an object nor an array
 describe('deepKeyMirror', () => {
@@ -30,7 +31,6 @@ describe('deepKeyMirror', () => {
     let func = () => 3;
     assert(deepKeyMirror(func) === func);
   });
-
   describe('with an object which should be processed', () => {
     it('supplies key name itself to its value', () => {
       let obj: any = { name: null, action: undefined };
@@ -41,6 +41,16 @@ describe('deepKeyMirror', () => {
       let obj: any = { name: 'some name', action: null };
       assert(deepKeyMirror(obj).name === 'some name');
       assert(deepKeyMirror(obj).action === 'action');
+    });
+  });
+
+  describe('with an array', () => {
+    it('supplies mirrored object with its key taken from array element', () => {
+      let array: (string|number)[] = ['foo', 'bar', 24];
+      let mirrored = deepKeyMirror(array);
+      assert(mirrored.foo === 'foo');
+      assert(mirrored.bar === 'bar');
+      assert(mirrored[24] === '24');
     });
   });
 });
