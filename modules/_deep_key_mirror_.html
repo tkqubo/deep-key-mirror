@@ -87,6 +87,7 @@
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_deep_key_mirror_.html#default" class="tsd-kind-icon">default</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_deep_key_mirror_.html#matrix" class="tsd-kind-icon">matrix</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -110,7 +111,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tkqubo/deep-key-mirror/blob/master/src/deep-key-mirror.ts#L48">deep-key-mirror.ts:48</a></li>
+									<li>Defined in <a href="https://github.com/tkqubo/deep-key-mirror/blob/master/src/deep-key-mirror.ts#L62">deep-key-mirror.ts:62</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -155,6 +156,34 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="matrix" class="tsd-anchor"></a>
+					<h3>matrix</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">matrix<span class="tsd-signature-symbol">(</span>keyMap<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, config<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_deep_key_mirror_.config.html" class="tsd-signature-type">Config</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/tkqubo/deep-key-mirror/blob/master/src/deep-key-mirror.ts#L73">deep-key-mirror.ts:73</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>keyMap: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> config: <a href="../interfaces/_deep_key_mirror_.config.html" class="tsd-signature-type">Config</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+						</li>
+					</ul>
+				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Object literals</h2>
@@ -164,16 +193,32 @@
 					<div class="tsd-signature tsd-kind-icon">Default<wbr>Config<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tkqubo/deep-key-mirror/blob/master/src/deep-key-mirror.ts#L10">deep-key-mirror.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/tkqubo/deep-key-mirror/blob/master/src/deep-key-mirror.ts#L24">deep-key-mirror.ts:24</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Default <code>Config</code> instance</p>
+							<pre><code><span class="hljs-rules">{
+  <span class="hljs-rule"><span class="hljs-attribute">prependKeyPath</span>:<span class="hljs-value"> true,
+  keyJoinString: <span class="hljs-string">'.'</span>,
+  makeUpperCase: false
+</span></span></span>}
+</code></pre>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>type</dt>
+							<dd><p>{{prependKeyPath: boolean, keyJoinString: string, makeUpperCase: boolean}}</p>
+							</dd>
+						</dl>
+					</div>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
 						<a name="defaultconfig.keyjoinstring" class="tsd-anchor"></a>
 						<h3>key<wbr>Join<wbr>String</h3>
 						<div class="tsd-signature tsd-kind-icon">key<wbr>Join<wbr>String<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/tkqubo/deep-key-mirror/blob/master/src/deep-key-mirror.ts#L12">deep-key-mirror.ts:12</a></li>
+								<li>Defined in <a href="https://github.com/tkqubo/deep-key-mirror/blob/master/src/deep-key-mirror.ts#L26">deep-key-mirror.ts:26</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -183,7 +228,7 @@
 						<div class="tsd-signature tsd-kind-icon">make<wbr>Upper<wbr>Case<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/tkqubo/deep-key-mirror/blob/master/src/deep-key-mirror.ts#L13">deep-key-mirror.ts:13</a></li>
+								<li>Defined in <a href="https://github.com/tkqubo/deep-key-mirror/blob/master/src/deep-key-mirror.ts#L27">deep-key-mirror.ts:27</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -193,7 +238,7 @@
 						<div class="tsd-signature tsd-kind-icon">prepend<wbr>Key<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/tkqubo/deep-key-mirror/blob/master/src/deep-key-mirror.ts#L11">deep-key-mirror.ts:11</a></li>
+								<li>Defined in <a href="https://github.com/tkqubo/deep-key-mirror/blob/master/src/deep-key-mirror.ts#L25">deep-key-mirror.ts:25</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -221,6 +266,9 @@
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="_deep_key_mirror_.html#default" class="tsd-kind-icon">default</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="_deep_key_mirror_.html#matrix" class="tsd-kind-icon">matrix</a>
 					</li>
 					<li class=" tsd-kind-object-literal tsd-parent-kind-external-module">
 						<a href="_deep_key_mirror_.html#defaultconfig" class="tsd-kind-icon">Default<wbr>Config</a>
