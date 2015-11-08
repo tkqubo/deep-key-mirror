@@ -2,6 +2,7 @@
 
 import assert from 'power-assert';
 import deepKeyMirror from '../src/index';
+import { matrix } from '../src/index';
 
 // not an object nor an array
 describe('deepKeyMirror', () => {
@@ -120,6 +121,56 @@ describe('deepKeyMirror', () => {
       };
       assert.deepEqual(actual, expected);
     });
+  });
+});
+
+describe('matrix', () => {
+  it('doesn\'t process null nor undefined', () => {
+    assert.equal(matrix(null), null);
+    assert.equal(matrix(undefined), null);
+  });
+  it('processes 1 string array', () => {
+    assert.deepEqual(matrix([['apple', 'orange', 'grape']]), {
+      apple: 'apple',
+      orange: 'orange',
+      grape: 'grape'
+    });
+  });
+  it('processes 2 string array', () => {
+    let actual = matrix(
+      [
+        ['company', 'individual'],
+        ['engineer', 'designer', 'manager']
+      ]
+    );
+    let expected = {
+      company: {
+        engineer: 'company.engineer',
+        designer: 'company.designer',
+        manager: 'company.manager'
+      },
+      individual: {
+        engineer: 'individual.engineer',
+        designer: 'individual.designer',
+        manager: 'individual.manager'
+      }
+    };
+    assert.deepEqual(actual, expected);
+  });
+  it('processes action names of async operation', () => {
+    let actual: any = matrix(
+      [
+        ['user', 'team', 'group'],
+        ['get', 'getList', 'post', 'put', 'delete'],
+        ['request', 'success', 'failure']
+      ],
+      { keyJoinString: '_', makeUpperCase: true }
+    );
+    assert.equal(actual.user.get.request, 'USER_GET_REQUEST');
+    assert.equal(actual.user.delete.success, 'USER_DELETE_SUCCESS');
+    assert.equal(actual.team.post.request, 'TEAM_POST_REQUEST');
+    assert.equal(actual.team.getList.request, 'TEAM_GETLIST_REQUEST');
+    assert.equal(actual.group.put.failure, 'GROUP_PUT_FAILURE');
   });
 });
 
