@@ -1,7 +1,7 @@
 'use strict';
 
 import assert from 'power-assert';
-import { deepKeyMirror } from '../src/deep-key-mirror';
+import deepKeyMirror from '../src/index';
 
 // not an object nor an array
 describe('deepKeyMirror', () => {

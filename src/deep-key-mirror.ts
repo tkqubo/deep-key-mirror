@@ -1,6 +1,18 @@
 'use strict';
 import * as _ from 'lodash';
 
+export interface Config {
+  prependKeyPath?: boolean;
+  keyJoinString?: string;
+  makeUpperCase?: boolean;
+}
+
+export const DefaultConfig: Config = {
+  prependKeyPath: true,
+  keyJoinString: '.',
+  makeUpperCase: false
+};
+
 /**
  * Constructs an enumeration with keys equal to their value.
  * <p>
@@ -30,53 +42,69 @@ import * as _ from 'lodash';
  * </pre>
  *
  * @param obj
+ * @param config
  * @returns {any}
  */
-export function deepKeyMirror(obj: any): any {
+export default function deepKeyMirror( obj: any, config: Config = DefaultConfig): any {
   'use strict';
-  return doDeepKeyMirror(obj);
+  return new DeepKeyMirror(config).deepKeyMirror(obj);
 }
 
-function doDeepKeyMirror(obj: any, paths: string[] = []): any {
-  'use strict';
-  if (obj === null || obj === undefined) {
-    return obj;
-  }
-  if (['boolean', 'number', 'function'].indexOf(typeof obj) !== -1) {
-    return obj;
-  }
-  if (_.isString(obj)) {
-    let parentPaths = _.dropRight(paths, 1);
-    return buildValue(parentPaths.concat(obj));
-  }
-  if (obj instanceof Array) {
-    // todo: reject an item that is not the type `string` nor `number`
-    return _.reduce(
-      obj,
-      (mirrored: any, prop: any) =>
-        Object.defineProperty(mirrored, prop, {
-          value: buildValue(paths.concat(prop.toString())),
-          enumerable: true,
-          writable: true,
-          configurable: true
-        }),
-      {} as any);
+export class DeepKeyMirror {
+  constructor(public config: Config) { }
+
+  deepKeyMirror(obj: any): any {
+    return this.doDeepKeyMirror(obj, []);
   }
 
-  let properties: string[] = Object
-    .keys(obj)
-    .filter((prop: string) => obj.hasOwnProperty(prop));
-  let [emptyProps, nonEmptyProps] = _.partition(properties, (prop: string) => obj[prop] === null || obj[prop] === undefined);
-  // assign prop name if its value is null or undefined
-  emptyProps
-    .forEach((prop: string) => obj[prop] = buildValue(paths.concat(prop)));
-  // assign recursively prop if its value is not null nor undefined
-  nonEmptyProps
-    .forEach((prop: string) => obj[prop] = doDeepKeyMirror(obj[prop], paths.concat(prop)));
-  return obj;
-}
+  private doDeepKeyMirror(obj: any, paths: string[]): any {
+    if (obj === null || obj === undefined) {
+      return obj;
+    }
 
-function buildValue(paths: string[]): string {
-  'use strict';
-  return paths.join('.');
+    if (['boolean', 'number', 'function'].indexOf(typeof obj) !== -1) {
+      return obj;
+    }
+
+    if (_.isString(obj)) {
+      if (this.config.prependKeyPath) {
+        let parentPaths = _.dropRight(paths, 1);
+        return this.buildValue(parentPaths.concat(obj));
+      } else {
+        return obj;
+      }
+    }
+
+    if (obj instanceof Array) {
+      // todo: reject an item that is not the type `string` nor `number`
+      return _.reduce(
+        obj,
+        (mirrored: any, prop: any) =>
+          Object.defineProperty(mirrored, prop, {
+            value: this.buildValue(paths.concat(prop.toString())),
+            enumerable: true,
+            writable: true,
+            configurable: true
+          }),
+        {} as any);
+    }
+
+    let properties: string[] = Object
+      .keys(obj)
+      .filter((prop: string) => obj.hasOwnProperty(prop));
+    let [emptyProps, nonEmptyProps] = _.partition(properties, (prop: string) => obj[prop] === null || obj[prop] === undefined);
+    // assign prop name if its value is null or undefined
+    emptyProps
+      .forEach((prop: string) => obj[prop] = this.buildValue(paths.concat(prop)));
+    // assign recursively prop if its value is not null nor undefined
+    nonEmptyProps
+      .forEach((prop: string) => obj[prop] = this.doDeepKeyMirror(obj[prop], paths.concat(prop)));
+    return obj;
+  }
+
+  private buildValue(paths: string[]): string {
+    return paths
+      .map(key => this.config.makeUpperCase ? key.toUpperCase() : key)
+      .join(this.config.keyJoinString);
+  }
 }
