@@ -62,6 +62,25 @@ describe('deepKeyMirror', () => {
 
   describe('with a nested object', () => {
     it('supplies path-concatenated prop name to its value', () => {
+      let breakfast: any = {
+        bread: null,
+        beverage: {
+          milk: null,
+          coffee: null
+        },
+        fruits: [
+          'orange',
+          'apple'
+        ]
+      };
+      let breakfastConfig = deepKeyMirror(breakfast);
+      assert(breakfastConfig.bread === 'bread');
+      assert(breakfastConfig.beverage.milk === 'beverage.milk');
+      assert(breakfastConfig.beverage.coffee === 'beverage.coffee');
+      assert(breakfastConfig.fruits.orange === 'fruits.orange');
+      assert(breakfastConfig.fruits.apple === 'fruits.apple');
+    });
+    it('supplies path-concatenated prop name to its value', () => {
       let actual = deepKeyMirror({
         user: {
           created: null,
