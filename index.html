@@ -72,6 +72,37 @@
 					<a href="https://codeclimate.com/github/tkqubo/deep-key-mirror/coverage"><img src="https://codeclimate.com/github/tkqubo/deep-key-mirror/badges/coverage.svg" alt="Test Coverage"></a>
 					<a href="https://codeclimate.com/github/tkqubo/deep-key-mirror"><img src="https://codeclimate.com/github/tkqubo/deep-key-mirror/badges/gpa.svg" alt="Code Climate"></a>
 				<a href="http://doge.mit-license.org"><img src="http://img.shields.io/:license-mit-blue.svg" alt="License"></a></p>
+				<p>Alternative to React&#39;s keyMirror </p>
+				<h2 id="installation">Installation</h2>
+				<pre><code class="lang-sh">npm install deep-key-mirror
+</code></pre>
+				<h2 id="usage">Usage</h2>
+				<pre><code class="lang-js"><span class="hljs-keyword">let</span> breakfast = {
+  bread: <span class="hljs-literal">null</span>,
+  beverage: {
+    milk: <span class="hljs-literal">null</span>,
+    coffee: <span class="hljs-literal">null</span>
+  },
+  fruits: [
+    <span class="hljs-string">'orange'</span>,
+    <span class="hljs-string">'apple'</span>
+  ]
+};
+<span class="hljs-keyword">let</span> breakfastConfig = deepKeyMirror(breakfast);
+<span class="hljs-comment">/*
+breakfastConfig === {
+  bread: 'bread',
+  beverage: {
+   milk: 'beverage.milk',
+   coffee: 'beverage.coffee',
+  },
+  fruits: {
+    orange: 'fruits.orange',
+    apple: 'fruits.apple'
+  }
+}
+*/</span>
+</code></pre>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
