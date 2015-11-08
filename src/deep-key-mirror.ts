@@ -110,6 +110,12 @@ export class DeepKeyMirror {
     return deepKeyMirror(matrix, this.config);
   }
 
+  /**
+   * @param obj
+   * @param paths
+   * @returns {any}
+   * @private
+   */
   private doDeepKeyMirror(obj: any, paths: string[]): any {
     if (this.isNullLike(obj)) {
       return obj;
@@ -160,12 +166,22 @@ export class DeepKeyMirror {
     return obj;
   }
 
+  /**
+   * @param paths
+   * @returns {any}
+   * @private
+   */
   private buildValue(paths: string[]): string {
     return paths
       .map(key => this.config.makeUpperCase ? key.toUpperCase() : key)
       .join(this.config.keyJoinString);
   }
 
+  /**
+   * @param obj
+   * @returns {boolean}
+   * @private
+   */
   private isNullLike(obj: any): boolean {
     return _.isNull(obj) || _.isUndefined(obj);
   }

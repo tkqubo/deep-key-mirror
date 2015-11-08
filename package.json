@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "install": "tsd --config tsd.json reinstall --overwrite",
-    "clean": "rm -rfv dist && rm -rfv src/*.{js,d.ts}",
+    "clean": "rm -rfv dist && rm -rfv src/*.{js,d.ts} && touch docs/.nojekyll",
     "build": "npm run clean && npm run lint && tsc && npm run dist && npm run docs",
     "dist": "mkdir -pv dist && cp -v src/*.js dist/ && mv -v src/*.d.ts dist/",
     "start": "npm run build",
