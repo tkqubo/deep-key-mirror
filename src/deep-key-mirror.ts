@@ -42,8 +42,12 @@ function doDeepKeyMirror(obj: any, paths: string[] = []): any {
   if (obj === null || obj === undefined) {
     return obj;
   }
-  if (['boolean', 'number', 'string', 'function'].indexOf(typeof obj) !== -1) {
+  if (['boolean', 'number', 'function'].indexOf(typeof obj) !== -1) {
     return obj;
+  }
+  if (_.isString(obj)) {
+    let parentPaths = _.dropRight(paths, 1);
+    return buildValue(parentPaths.concat(obj));
   }
   if (obj instanceof Array) {
     // todo: reject an item that is not the type `string` nor `number`

@@ -24,7 +24,7 @@ describe('deepKeyMirror', () => {
 
   it('does nothing when a string is passed as an argument', () => {
     let str = 'foo';
-    assert(deepKeyMirror(str) === str);
+    assert.equal(deepKeyMirror(str), str);
   });
 
   it('does nothing when a boolean is passed as an argument', () => {
@@ -110,11 +110,11 @@ describe('deepKeyMirror', () => {
           stop: 'status.stop'
         },
         other: {
-          fixed: 'FIXED_VALUE',
+          fixed: 'other.FIXED_VALUE',
           misc: {
             miscA: 'other.misc.miscA',
             miscB: 'other.misc.miscB',
-            miscZ: 'Z'
+            miscZ: 'other.misc.Z'
           }
         }
       };
