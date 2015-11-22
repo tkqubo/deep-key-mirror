@@ -77,11 +77,17 @@
 				<pre><code class="lang-sh">npm install deep-key-mirror
 </code></pre>
 				<h2 id="usage">Usage</h2>
+				<h3 id="-deepkeymirror-any-config-"><code>deepKeyMirror(any, [config])</code></h3>
+				<p>Constructs an enumeration with keys equal to their value.</p>
+				<p>If the given object has child arrays or objects, they are also &quot;key-mirrored&quot; recursively,
+				with the <code>&#39;.&#39;</code>-concatenated paths from the root object assigned to each of their value.</p>
+				<h4 id="example">example</h4>
 				<pre><code class="lang-js"><span class="hljs-keyword">let</span> breakfast = {
   bread: <span class="hljs-literal">null</span>,
   beverage: {
     milk: <span class="hljs-literal">null</span>,
-    coffee: <span class="hljs-literal">null</span>
+    coffee: <span class="hljs-literal">null</span>,
+    beer: <span class="hljs-string">"BEER!"</span>
   },
   fruits: [
     <span class="hljs-string">'orange'</span>,
@@ -95,6 +101,7 @@ breakfastConfig === {
   beverage: {
    milk: 'beverage.milk',
    coffee: 'beverage.coffee',
+   beer: 'beverage.BEER!'
   },
   fruits: {
     orange: 'fruits.orange',
@@ -103,6 +110,91 @@ breakfastConfig === {
 }
 */</span>
 </code></pre>
+				<h3 id="-matrix-string-config-"><code>matrix(string[][], [config])</code></h3>
+				<p>Creates an isomorphic and recursive key-value structure.
+				Consider the Redux scenario below:</p>
+				<p>You have a RESTful API with the following specification:</p>
+				<ul>
+					<li>The API can manipulate 3 types of resources; <code>user</code>, <code>team</code> and <code>group</code></li>
+					<li>Each of them can be manipulated by these operations; <code>GET</code>, <code>POST</code>, <code>PUT</code>, and <code>DELETE</code><br>e.g. for <code>user</code> resource manipulation, there are totally 5 API endpoints:<ul>
+							<li><code>POST /users</code> to create a user</li>
+							<li><code>GET /users</code> to retrieve a user list</li>
+							<li><code>GET /users/:id</code> to retrieve a specified user</li>
+							<li><code>PUT /users/:id</code> to update a specified user</li>
+							<li><code>DELETE /users/:id</code> to delete a specified user</li>
+						</ul>
+					</li>
+					<li>In order to represent asynchronous API calls in Redux, there are 3 action types per each endpoint.<ul>
+							<li><code>request</code> action: happens when api call has been fired</li>
+							<li><code>success</code> action: happens when api call has been completed with success</li>
+							<li><code>failure</code> action: happens when api call has been completed with failure</li>
+						</ul>
+					</li>
+				</ul>
+				<p>To create all of action types to meet the requirements above, you can simply write as follows:</p>
+				<h4 id="example">example</h4>
+				<pre><code class="lang-js"><span class="hljs-keyword">let</span> restApi = matrix([
+  [<span class="hljs-string">'user'</span>, <span class="hljs-string">'team'</span>, <span class="hljs-string">'group'</span>],
+  [<span class="hljs-string">'get'</span>, <span class="hljs-string">'getList'</span>, <span class="hljs-string">'post'</span>, <span class="hljs-string">'put'</span>, <span class="hljs-string">'delete'</span>],
+  [ <span class="hljs-string">'request'</span>, <span class="hljs-string">'success'</span>, <span class="hljs-string">'failure'</span> ]
+]);
+<span class="hljs-comment">/*
+ restApi === {
+   user: {
+     get:     { request: 'user.get.request',      success: 'user.get.success',      failure: 'user.get.failure' },
+     getList: { request: 'user.getList.request',  success: 'user.getList.success',  failure: 'user.getList.failure' },
+     post:    { request: 'user.post.request',     success: 'user.post.success',     failure: 'user.post.failure' },
+     put:     { request: 'user.put.request',      success: 'user.put.success',      failure: 'user.put.failure' },
+     delete:  { request: 'user.delete.request',   success: 'user.delete.success',   failure: 'user.delete.failure' },
+   },
+   team: {
+     get:     { request: 'team.get.request',      success: 'team.get.success',      failure: 'team.get.failure' },
+     getList: { request: 'team.getList.request',  success: 'team.getList.success',  failure: 'team.getList.failure' },
+     post:    { request: 'team.post.request',     success: 'team.post.success',     failure: 'team.post.failure' },
+     put:     { request: 'team.put.request',      success: 'team.put.success',      failure: 'team.put.failure' },
+     delete:  { request: 'team.delete.request',   success: 'team.delete.success',   failure: 'team.delete.failure' },
+   },
+   group: {
+     get:     { request: 'group.get.request',     success: 'group.get.success',     failure: 'group.get.failure' },
+     getList: { request: 'group.getList.request', success: 'group.getList.success', failure: 'group.getList.failure' },
+     post:    { request: 'group.post.request',    success: 'group.post.success',    failure: 'group.post.failure' },
+     put:     { request: 'group.put.request',     success: 'group.put.success',     failure: 'group.put.failure' },
+     delete:  { request: 'group.delete.request',  success: 'group.delete.success',  failure: 'group.delete.failure' },
+   }
+ }
+ */</span>
+
+<span class="hljs-comment">// actions/getTeam.js</span>
+<span class="hljs-keyword">let</span> restApi = ...;
+<span class="hljs-keyword">let</span> { request, success, failure } = restApi.team.get;
+
+<span class="hljs-comment">// get team</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> id =&gt; dispatch =&gt; {
+  dispatch({
+    type: request,
+    payload: { id }
+  });
+  teamService
+    .getTeamById(id)
+    .then((team) =&gt;
+      dispatch({
+        type: success,
+        payload: { team }
+      })
+    , (failure) =&gt;
+      dispatch({
+        type: failure,
+        error: <span class="hljs-literal">true</span>,
+        payload: { failure }
+      })
+    );
+};
+</code></pre>
+				<h3 id="-config-"><code>config</code></h3>
+				<p>both <code>deepKeyMirror</code> and <code>matrix</code> can take <code>config</code> object as a second argument</p>
+				<p>prependKeyPath: true,
+					keyJoinString: &#39;.&#39;,
+				makeUpperCase: false</p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
