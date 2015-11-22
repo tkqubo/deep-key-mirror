@@ -29,31 +29,6 @@ export const DefaultConfig: Config = {
 
 /**
  * Constructs an enumeration with keys equal to their value.
- * <p>
- * If the given object has child arrays or objects, they are also similarly constructed recursively,
- * with their value assigned by the paths from the root object concatenated with `'.'`
- * </p>
- *
- * For example:
- * <pre>
- *   let breakfast = {
- *     bread: null,
- *     beverage: {
- *       milk: null,
- *       coffee: null
- *     },
- *     fruits: [
- *       'orange',
- *       'apple'
- *     ]
- *   };
- *   let breakfastConfig = deepKeyMirror(breakfast);
- *   breakfastConfig.bread === 'bread';
- *   breakfastConfig.beverage.milk === 'beverage.milk';
- *   breakfastConfig.beverage.coffee === 'beverage.coffee';
- *   breakfastConfig.fruits.orange === 'fruits.orange';
- *   breakfastConfig.fruits.apple === 'fruits.apple';
- * </pre>
  *
  * @param obj
  * @param config
@@ -65,6 +40,7 @@ export default function deepKeyMirror(obj: any, config?: Config): any {
 }
 
 /**
+ * Creates an isomorphic and recursive key-value structure.
  *
  * @param keyMap
  * @param config

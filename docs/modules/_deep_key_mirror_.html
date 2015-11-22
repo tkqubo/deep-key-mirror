@@ -111,37 +111,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tkqubo/deep-key-mirror/blob/master/src/deep-key-mirror.ts#L62">deep-key-mirror.ts:62</a></li>
+									<li>Defined in <a href="https://github.com/tkqubo/deep-key-mirror/blob/master/src/deep-key-mirror.ts#L37">deep-key-mirror.ts:37</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Constructs an enumeration with keys equal to their value.</p>
-									<p>
-										If the given object has child arrays or objects, they are also similarly constructed recursively,
-										with their value assigned by the paths from the root object concatenated with <code>&#39;.&#39;</code>
-									</p>
 								</div>
-								<p>For example:</p>
-								<pre>
-  let breakfast = {
-    bread: null,
-    beverage: {
-      milk: null,
-      coffee: null
-    },
-    fruits: [
-      'orange',
-      'apple'
-    ]
-  };
-  let breakfastConfig = deepKeyMirror(breakfast);
-  breakfastConfig.bread === 'bread';
-  breakfastConfig.beverage.milk === 'beverage.milk';
-  breakfastConfig.beverage.coffee === 'beverage.coffee';
-  breakfastConfig.fruits.orange === 'fruits.orange';
-  breakfastConfig.fruits.apple === 'fruits.apple';
-</pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -166,10 +142,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tkqubo/deep-key-mirror/blob/master/src/deep-key-mirror.ts#L73">deep-key-mirror.ts:73</a></li>
+									<li>Defined in <a href="https://github.com/tkqubo/deep-key-mirror/blob/master/src/deep-key-mirror.ts#L49">deep-key-mirror.ts:49</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates an isomorphic and recursive key-value structure.</p>
+								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">

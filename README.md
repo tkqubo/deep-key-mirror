@@ -16,12 +16,22 @@ npm install deep-key-mirror
 
 ## Usage
 
+### `deepKeyMirror(any, [config])`
+
+Constructs an enumeration with keys equal to their value.
+
+If the given object has child arrays or objects, they are also "key-mirrored" recursively,
+with the `'.'`-concatenated paths from the root object assigned to each of their value.
+ 
+#### example
+
 ```js
 let breakfast = {
   bread: null,
   beverage: {
     milk: null,
-    coffee: null
+    coffee: null,
+    beer: "BEER!"
   },
   fruits: [
     'orange',
@@ -35,6 +45,7 @@ breakfastConfig === {
   beverage: {
    milk: 'beverage.milk',
    coffee: 'beverage.coffee',
+   beer: 'beverage.BEER!'
   },
   fruits: {
     orange: 'fruits.orange',
@@ -42,4 +53,89 @@ breakfastConfig === {
   }
 }
 */
+
 ```
+
+### `matrix(string[][], [config])`
+
+Creates an isomorphic and recursive key-value structure.
+Consider the Redux scenario below:
+ 
+You have a RESTful API with the following specification:
+
+- The API can manipulate 3 types of resources; `user`, `team` and `group`
+- Each of them can be manipulated by these operations; `GET`, `POST`, `PUT`, and `DELETE`  
+  e.g. for `user` resource manipulation, there are totally 5 API endpoints:
+  - `POST /users` to create a user
+  - `GET /users` to retrieve a user list
+  - `GET /users/:id` to retrieve a specified user
+  - `PUT /users/:id` to update a specified user
+  - `DELETE /users/:id` to delete a specified user
+- In order to represent asynchronous API calls in Redux, there are 3 action types per each endpoint.
+  - `request` action: happens when api call has been fired
+  - `success` action: happens when api call has been completed with success
+  - `failure` action: happens when api call has been completed with failure
+
+To create all of action types to meet the requirements above, you can simply write as follows:
+
+#### example
+
+```js
+let restApi = matrix([
+  ['user', 'team', 'group'],
+  ['get', 'getList', 'post', 'put', 'delete'],
+  [ 'request', 'success', 'failure' ]
+]);
+/*
+ restApi === {
+   user: {
+     get:     { request: 'user.get.request',      success: 'user.get.success',      failure: 'user.get.failure' },
+     getList: { request: 'user.getList.request',  success: 'user.getList.success',  failure: 'user.getList.failure' },
+     post:    { request: 'user.post.request',     success: 'user.post.success',     failure: 'user.post.failure' },
+     put:     { request: 'user.put.request',      success: 'user.put.success',      failure: 'user.put.failure' },
+     delete:  { request: 'user.delete.request',   success: 'user.delete.success',   failure: 'user.delete.failure' },
+   },
+   team: {
+     get:     { request: 'team.get.request',      success: 'team.get.success',      failure: 'team.get.failure' },
+     getList: { request: 'team.getList.request',  success: 'team.getList.success',  failure: 'team.getList.failure' },
+     post:    { request: 'team.post.request',     success: 'team.post.success',     failure: 'team.post.failure' },
+     put:     { request: 'team.put.request',      success: 'team.put.success',      failure: 'team.put.failure' },
+     delete:  { request: 'team.delete.request',   success: 'team.delete.success',   failure: 'team.delete.failure' },
+   },
+   group: {
+     get:     { request: 'group.get.request',     success: 'group.get.success',     failure: 'group.get.failure' },
+     getList: { request: 'group.getList.request', success: 'group.getList.success', failure: 'group.getList.failure' },
+     post:    { request: 'group.post.request',    success: 'group.post.success',    failure: 'group.post.failure' },
+     put:     { request: 'group.put.request',     success: 'group.put.success',     failure: 'group.put.failure' },
+     delete:  { request: 'group.delete.request',  success: 'group.delete.success',  failure: 'group.delete.failure' },
+   }
+ }
+ */
+ 
+// actions/getTeam.js
+let restApi = ...;
+let { request, success, failure } = restApi.team.get;
+
+// get team
+export default id => dispatch => {
+  dispatch({
+    type: request,
+    payload: { id }
+  });
+  teamService
+    .getTeamById(id)
+    .then((team) =>
+      dispatch({
+        type: success,
+        payload: { team }
+      })
+    , (failure) =>
+      dispatch({
+        type: failure,
+        error: true,
+        payload: { failure }
+      })
+    );
+};
+```
+
