@@ -139,3 +139,83 @@ export default id => dispatch => {
 };
 ```
 
+### `config`
+
+Both `deepKeyMirror` and `matrix` can take `config` object as a second argument, which has these three options
+
+| prop             | type    | default | description                                                                                                                                                           |
+|:-----------------|:--------|:--------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `prependKeyPath` | boolean | true    | When set to `true` and if `deepKeyMirror` find a string value during object traversal, it uses the string prepended by concatenated object path as its mirrored path. |
+| `keyJoinString`  | string  | `'.'`   | Separator for joining object paths.                                                                                                                                   |
+| `makeUpperCase`  | boolean | false   | When set to `true`, values will be mirrored with uppercase.                                                                                                           |
+
+#### examples
+
+```js
+let props = {
+  color: {
+    red: null,
+    green: null,
+    blue: 'not_an_yellow',
+    other: {
+      brown: 'maroon'
+    }
+  }
+};
+
+let propConfig = deepKeyMirror(props, { prependKeyPath: true });
+/*
+props = {
+  color: {
+    red: 'color.red',
+    green: 'color.green',
+    blue: 'color.not_an_yellow',
+    other: {
+      brown: 'color.other.maroon'
+    }
+  }
+};
+*/
+
+let propConfig = deepKeyMirror(props, { prependKeyPath: false });
+/*
+props = {
+  color: {
+    red: 'color.red',
+    green: 'color.green',
+    blue: 'not_an_yellow',
+    other: {
+      brown: 'maroon'
+    }
+  }
+};
+*/
+
+let propConfig = deepKeyMirror(props, { keyJoinString: '-' });
+/*
+props = {
+  color: {
+    red: 'color-red',
+    green: 'color-green',
+    blue: 'color-not_an_yellow',
+    other: {
+      brown: 'color-other-maroon'
+    }
+  }
+};
+*/
+
+let propConfig = deepKeyMirror(props, { makeUpperCase: true });
+/*
+props = {
+  color: {
+    red: 'COLOR.RED',
+    green: 'COLOR.GREEN',
+    blue: 'COLOR.NOT_AN_YELLOW',
+    other: {
+      brown: 'COLOR.OTHER.MAROON'
+    }
+  }
+};
+*/
+```
