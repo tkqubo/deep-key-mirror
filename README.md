@@ -219,3 +219,7 @@ props = {
 };
 */
 ```
+
+## TypeScript
+
+TypeDoc-generated documentation is available [here](http://tkqubo.github.io/deep-key-mirror/)
