@@ -191,10 +191,107 @@ breakfastConfig === {
 };
 </code></pre>
 				<h3 id="-config-"><code>config</code></h3>
-				<p>both <code>deepKeyMirror</code> and <code>matrix</code> can take <code>config</code> object as a second argument</p>
-				<p>prependKeyPath: true,
-					keyJoinString: &#39;.&#39;,
-				makeUpperCase: false</p>
+				<p>Both <code>deepKeyMirror</code> and <code>matrix</code> can take <code>config</code> object as a second argument, which has these three options</p>
+				<table>
+					<thead>
+						<tr>
+							<th style="text-align:left">prop</th>
+							<th style="text-align:left">type</th>
+							<th style="text-align:left">default</th>
+							<th style="text-align:left">description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td style="text-align:left"><code>prependKeyPath</code></td>
+							<td style="text-align:left">boolean</td>
+							<td style="text-align:left">true</td>
+							<td style="text-align:left">When set to <code>true</code> and if <code>deepKeyMirror</code> find a string value during object traversal, it uses the string prepended by concatenated object path as its mirrored path.</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"><code>keyJoinString</code></td>
+							<td style="text-align:left">string</td>
+							<td style="text-align:left"><code>&#39;.&#39;</code></td>
+							<td style="text-align:left">Separator for joining object paths.</td>
+						</tr>
+						<tr>
+							<td style="text-align:left"><code>makeUpperCase</code></td>
+							<td style="text-align:left">boolean</td>
+							<td style="text-align:left">false</td>
+							<td style="text-align:left">When set to <code>true</code>, values will be mirrored with uppercase.</td>
+						</tr>
+					</tbody>
+				</table>
+				<h4 id="examples">examples</h4>
+				<pre><code class="lang-js"><span class="hljs-keyword">let</span> props = {
+  color: {
+    red: <span class="hljs-literal">null</span>,
+    green: <span class="hljs-literal">null</span>,
+    blue: <span class="hljs-string">'not_an_yellow'</span>,
+    other: {
+      brown: <span class="hljs-string">'maroon'</span>
+    }
+  }
+};
+
+<span class="hljs-keyword">let</span> propConfig = deepKeyMirror(props, { prependKeyPath: <span class="hljs-literal">true</span> });
+<span class="hljs-comment">/*
+props = {
+  color: {
+    red: 'color.red',
+    green: 'color.green',
+    blue: 'color.not_an_yellow',
+    other: {
+      brown: 'color.other.maroon'
+    }
+  }
+};
+*/</span>
+
+<span class="hljs-keyword">let</span> propConfig = deepKeyMirror(props, { prependKeyPath: <span class="hljs-literal">false</span> });
+<span class="hljs-comment">/*
+props = {
+  color: {
+    red: 'color.red',
+    green: 'color.green',
+    blue: 'not_an_yellow',
+    other: {
+      brown: 'maroon'
+    }
+  }
+};
+*/</span>
+
+<span class="hljs-keyword">let</span> propConfig = deepKeyMirror(props, { keyJoinString: <span class="hljs-string">'-'</span> });
+<span class="hljs-comment">/*
+props = {
+  color: {
+    red: 'color-red',
+    green: 'color-green',
+    blue: 'color-not_an_yellow',
+    other: {
+      brown: 'color-other-maroon'
+    }
+  }
+};
+*/</span>
+
+<span class="hljs-keyword">let</span> propConfig = deepKeyMirror(props, { makeUpperCase: <span class="hljs-literal">true</span> });
+<span class="hljs-comment">/*
+props = {
+  color: {
+    red: 'COLOR.RED',
+    green: 'COLOR.GREEN',
+    blue: 'COLOR.NOT_AN_YELLOW',
+    other: {
+      brown: 'COLOR.OTHER.MAROON'
+    }
+  }
+};
+*/</span>
+</code></pre>
+				<h2 id="typescript">TypeScript</h2>
+				<p>TypeDoc-generated documentation is available <a href="http://tkqubo.github.io/deep-key-mirror/">here</a></p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
