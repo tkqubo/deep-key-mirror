@@ -3,7 +3,7 @@ node_modules
 typings
 
 coverage
-dist
+dist/*.js
 
 .idea
 

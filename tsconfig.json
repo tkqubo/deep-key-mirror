@@ -9,6 +9,9 @@
   },
   "exclude": [
     "node_modules",
-    "index.d.ts"
+    "index.ts",
+    "main.d.ts",
+    "typings/browser.d.ts",
+    "typings/browser"
   ]
 }
