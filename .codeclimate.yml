@@ -4,6 +4,11 @@ engines:
     enabled: true
 ratings:
   paths:
-  - "**.ts"
+    - "**.ts"
 exclude_paths:
-- node_modules/**/*
+  - node_modules
+  - coverage
+  - docs
+  - dist
+  - typings
+
