@@ -1,5 +1,8 @@
 'use strict';
 import deepKeyMirror from './deep-key-mirror';
-export * from './deep-key-mirror';
-export default deepKeyMirror;
 
+export * from './deep-key-mirror';
+export * from './model';
+export * from './matrix';
+
+export default deepKeyMirror;

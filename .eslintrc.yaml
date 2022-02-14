@@ -21,8 +21,8 @@ rules:
   import/order:
     - error
     - pathGroups:
-      - pattern: '@*'
-        group: external
+        - pattern: '@*'
+          group: external
 settings:
   import/resolver:
     typescript: {}

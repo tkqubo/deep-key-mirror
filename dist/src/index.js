@@ -15,4 +15,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const deep_key_mirror_1 = __importDefault(require("./deep-key-mirror"));
 __exportStar(require("./deep-key-mirror"), exports);
+__exportStar(require("./model"), exports);
+__exportStar(require("./matrix"), exports);
 exports.default = deep_key_mirror_1.default;
