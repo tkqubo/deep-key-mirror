@@ -1,381 +1,110 @@
-<!doctype html>
-<html class="default no-js">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>deep-key-mirror</title>
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="assets/css/main.css">
-	<script src="assets/js/modernizr.js"></script>
-</head>
-<body>
-<header>
-	<div class="tsd-page-toolbar">
-		<div class="container">
-			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
-					<div class="field">
-						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
-						<input id="tsd-search-field" type="text" />
-					</div>
-					<ul class="results">
-						<li class="state loading">Preparing search index...</li>
-						<li class="state failure">The search index is not available</li>
-					</ul>
-					<a href="index.html" class="title">deep-key-mirror</a>
-				</div>
-				<div class="table-cell" id="tsd-widgets">
-					<div id="tsd-filter">
-						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
-						<div class="tsd-filter-group">
-							<div class="tsd-select" id="tsd-filter-visibility">
-								<span class="tsd-select-label">All</span>
-								<ul class="tsd-select-list">
-									<li data-value="public">Public</li>
-									<li data-value="protected">Public/Protected</li>
-									<li data-value="private" class="selected">All</li>
-								</ul>
-							</div>
-							<input type="checkbox" id="tsd-filter-inherited" checked />
-							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-externals" checked />
-							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-							<input type="checkbox" id="tsd-filter-only-exported" />
-							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
-						</div>
-					</div>
-					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="tsd-page-title">
-		<div class="container">
-			<ul class="tsd-breadcrumb">
-				<li>
-					<a href="globals.html">Globals</a>
-				</li>
-			</ul>
-			<h1> deep-key-mirror</h1>
-		</div>
-	</div>
-</header>
-<div class="container container-main">
-	<div class="row">
-		<div class="col-8 col-content">
-			<div class="tsd-panel tsd-typography">
-				<h1 id="deep-key-mirror">Deep Key Mirror</h1>
-				<p><a href="http://badge.fury.io/js/deep-key-mirror"><img src="https://badge.fury.io/js/deep-key-mirror.svg" alt="npm version"></a>
-					<a href="https://travis-ci.org/tkqubo/deep-key-mirror"><img src="https://travis-ci.org/tkqubo/deep-key-mirror.svg?branch=master" alt="Build Status"></a>
-					<img src="https://david-dm.org/tkqubo/deep-key-mirror.svg" alt="David">
-					<a href="https://codeclimate.com/github/tkqubo/deep-key-mirror/coverage"><img src="https://codeclimate.com/github/tkqubo/deep-key-mirror/badges/coverage.svg" alt="Test Coverage"></a>
-					<a href="https://codeclimate.com/github/tkqubo/deep-key-mirror"><img src="https://codeclimate.com/github/tkqubo/deep-key-mirror/badges/gpa.svg" alt="Code Climate"></a>
-				<a href="http://doge.mit-license.org"><img src="http://img.shields.io/:license-mit-blue.svg" alt="License"></a></p>
-				<p>Alternative to React&#39;s keyMirror </p>
-				<h2 id="installation">Installation</h2>
-				<pre><code class="lang-sh">npm install deep-key-mirror
+<!DOCTYPE html><html class="default"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>deep-key-mirror</title><meta name="description" content="Documentation for deep-key-mirror"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><script>document.body.classList.add(localStorage.getItem("tsd-theme") || "os")</script><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">deep-key-mirror</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label><input type="checkbox" id="tsd-filter-externals" checked/><label class="tsd-widget" for="tsd-filter-externals">Externals</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1>deep-key-mirror</h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography">
+<a href="#deep-key-mirror" id="deep-key-mirror" style="color: inherit; text-decoration: none;">
+  <h1>Deep Key Mirror</h1>
+</a>
+<p><a href="http://badge.fury.io/js/deep-key-mirror"><img src="https://badge.fury.io/js/deep-key-mirror.svg" alt="npm version"></a>
+<a href="https://travis-ci.org/tkqubo/deep-key-mirror"><img src="https://travis-ci.org/tkqubo/deep-key-mirror.svg?branch=master" alt="Build Status"></a>
+<img src="https://david-dm.org/tkqubo/deep-key-mirror.svg" alt="David">
+<a href="https://codeclimate.com/github/tkqubo/deep-key-mirror/coverage"><img src="https://codeclimate.com/github/tkqubo/deep-key-mirror/badges/coverage.svg" alt="Test Coverage"></a>
+<a href="https://codeclimate.com/github/tkqubo/deep-key-mirror"><img src="https://codeclimate.com/github/tkqubo/deep-key-mirror/badges/gpa.svg" alt="Code Climate"></a>
+<a href="http://doge.mit-license.org"><img src="http://img.shields.io/:license-mit-blue.svg" alt="License"></a></p>
+<p>Alternative to React&#39;s keyMirror </p>
+
+<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+  <h2>Installation</h2>
+</a>
+<pre><code class="language-sh"><span class="hl-0">npm install deep-key-mirror</span>
 </code></pre>
-				<h2 id="usage">Usage</h2>
-				<h3 id="-deepkeymirror-any-config-"><code>deepKeyMirror(any, [config])</code></h3>
-				<p>Constructs an enumeration with keys equal to their value.</p>
-				<p>If the given object has child arrays or objects, they are also &quot;key-mirrored&quot; recursively,
-				with the <code>&#39;.&#39;</code>-concatenated paths from the root object assigned to each of their value.</p>
-				<h4 id="example">example</h4>
-				<pre><code class="lang-js"><span class="hljs-keyword">let</span> breakfast = {
-  bread: <span class="hljs-literal">null</span>,
-  beverage: {
-    milk: <span class="hljs-literal">null</span>,
-    coffee: <span class="hljs-literal">null</span>,
-    beer: <span class="hljs-string">"BEER!"</span>
-  },
-  fruits: [
-    <span class="hljs-string">'orange'</span>,
-    <span class="hljs-string">'apple'</span>
-  ]
-};
-<span class="hljs-keyword">let</span> breakfastConfig = deepKeyMirror(breakfast);
-<span class="hljs-comment">/*
-breakfastConfig === {
-  bread: 'bread',
-  beverage: {
-   milk: 'beverage.milk',
-   coffee: 'beverage.coffee',
-   beer: 'beverage.BEER!'
-  },
-  fruits: {
-    orange: 'fruits.orange',
-    apple: 'fruits.apple'
-  }
-}
-*/</span>
+
+<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+  <h2>Usage</h2>
+</a>
+
+<a href="#deepkeymirrorany-config" id="deepkeymirrorany-config" style="color: inherit; text-decoration: none;">
+  <h3><code>deepKeyMirror(any, [config])</code></h3>
+</a>
+<p>Constructs an enumeration with keys equal to their value.</p>
+<p>If the given object has child arrays or objects, they are also &quot;key-mirrored&quot; recursively,
+with the <code>&#39;.&#39;</code>-concatenated paths from the root object assigned to each of their value.</p>
+
+<a href="#example" id="example" style="color: inherit; text-decoration: none;">
+  <h4>example</h4>
+</a>
+<pre><code class="language-js"><span class="hl-2">let</span><span class="hl-0"> </span><span class="hl-4">breakfast</span><span class="hl-0"> = {</span><br/><span class="hl-0">  </span><span class="hl-4">bread:</span><span class="hl-0"> </span><span class="hl-2">null</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-4">beverage:</span><span class="hl-0"> {</span><br/><span class="hl-0">    </span><span class="hl-4">milk:</span><span class="hl-0"> </span><span class="hl-2">null</span><span class="hl-0">,</span><br/><span class="hl-0">    </span><span class="hl-4">coffee:</span><span class="hl-0"> </span><span class="hl-2">null</span><span class="hl-0">,</span><br/><span class="hl-0">    </span><span class="hl-4">beer:</span><span class="hl-0"> </span><span class="hl-3">&quot;BEER!&quot;</span><br/><span class="hl-0">  },</span><br/><span class="hl-0">  </span><span class="hl-4">fruits:</span><span class="hl-0"> [</span><br/><span class="hl-0">    </span><span class="hl-3">&#39;orange&#39;</span><span class="hl-0">,</span><br/><span class="hl-0">    </span><span class="hl-3">&#39;apple&#39;</span><br/><span class="hl-0">  ]</span><br/><span class="hl-0">};</span><br/><span class="hl-2">let</span><span class="hl-0"> </span><span class="hl-4">breakfastConfig</span><span class="hl-0"> = </span><span class="hl-5">deepKeyMirror</span><span class="hl-0">(</span><span class="hl-4">breakfast</span><span class="hl-0">);</span><br/><span class="hl-6">/*</span><br/><span class="hl-6">breakfastConfig === {</span><br/><span class="hl-6">  bread: &#39;bread&#39;,</span><br/><span class="hl-6">  beverage: {</span><br/><span class="hl-6">   milk: &#39;beverage.milk&#39;,</span><br/><span class="hl-6">   coffee: &#39;beverage.coffee&#39;,</span><br/><span class="hl-6">   beer: &#39;beverage.BEER!&#39;</span><br/><span class="hl-6">  },</span><br/><span class="hl-6">  fruits: {</span><br/><span class="hl-6">    orange: &#39;fruits.orange&#39;,</span><br/><span class="hl-6">    apple: &#39;fruits.apple&#39;</span><br/><span class="hl-6">  }</span><br/><span class="hl-6">}</span><br/><span class="hl-6">*/</span><br/>
 </code></pre>
-				<h3 id="-matrix-string-config-"><code>matrix(string[][], [config])</code></h3>
-				<p>Creates an isomorphic and recursive key-value structure.
-				Consider the Redux scenario below:</p>
-				<p>You have a RESTful API with the following specification:</p>
-				<ul>
-					<li>The API can manipulate 3 types of resources; <code>user</code>, <code>team</code> and <code>group</code></li>
-					<li>Each of them can be manipulated by these operations; <code>GET</code>, <code>POST</code>, <code>PUT</code>, and <code>DELETE</code><br>e.g. for <code>user</code> resource manipulation, there are totally 5 API endpoints:<ul>
-							<li><code>POST /users</code> to create a user</li>
-							<li><code>GET /users</code> to retrieve a user list</li>
-							<li><code>GET /users/:id</code> to retrieve a specified user</li>
-							<li><code>PUT /users/:id</code> to update a specified user</li>
-							<li><code>DELETE /users/:id</code> to delete a specified user</li>
-						</ul>
-					</li>
-					<li>In order to represent asynchronous API calls in Redux, there are 3 action types per each endpoint.<ul>
-							<li><code>request</code> action: happens when api call has been fired</li>
-							<li><code>success</code> action: happens when api call has been completed with success</li>
-							<li><code>failure</code> action: happens when api call has been completed with failure</li>
-						</ul>
-					</li>
-				</ul>
-				<p>To create all of action types to meet the requirements above, you can simply write as follows:</p>
-				<h4 id="example">example</h4>
-				<pre><code class="lang-js"><span class="hljs-keyword">let</span> restApi = matrix([
-  [<span class="hljs-string">'user'</span>, <span class="hljs-string">'team'</span>, <span class="hljs-string">'group'</span>],
-  [<span class="hljs-string">'get'</span>, <span class="hljs-string">'getList'</span>, <span class="hljs-string">'post'</span>, <span class="hljs-string">'put'</span>, <span class="hljs-string">'delete'</span>],
-  [ <span class="hljs-string">'request'</span>, <span class="hljs-string">'success'</span>, <span class="hljs-string">'failure'</span> ]
-]);
-<span class="hljs-comment">/*
- restApi === {
-   user: {
-     get:     { request: 'user.get.request',      success: 'user.get.success',      failure: 'user.get.failure' },
-     getList: { request: 'user.getList.request',  success: 'user.getList.success',  failure: 'user.getList.failure' },
-     post:    { request: 'user.post.request',     success: 'user.post.success',     failure: 'user.post.failure' },
-     put:     { request: 'user.put.request',      success: 'user.put.success',      failure: 'user.put.failure' },
-     delete:  { request: 'user.delete.request',   success: 'user.delete.success',   failure: 'user.delete.failure' },
-   },
-   team: {
-     get:     { request: 'team.get.request',      success: 'team.get.success',      failure: 'team.get.failure' },
-     getList: { request: 'team.getList.request',  success: 'team.getList.success',  failure: 'team.getList.failure' },
-     post:    { request: 'team.post.request',     success: 'team.post.success',     failure: 'team.post.failure' },
-     put:     { request: 'team.put.request',      success: 'team.put.success',      failure: 'team.put.failure' },
-     delete:  { request: 'team.delete.request',   success: 'team.delete.success',   failure: 'team.delete.failure' },
-   },
-   group: {
-     get:     { request: 'group.get.request',     success: 'group.get.success',     failure: 'group.get.failure' },
-     getList: { request: 'group.getList.request', success: 'group.getList.success', failure: 'group.getList.failure' },
-     post:    { request: 'group.post.request',    success: 'group.post.success',    failure: 'group.post.failure' },
-     put:     { request: 'group.put.request',     success: 'group.put.success',     failure: 'group.put.failure' },
-     delete:  { request: 'group.delete.request',  success: 'group.delete.success',  failure: 'group.delete.failure' },
-   }
- }
- */</span>
 
-<span class="hljs-comment">// actions/getTeam.js</span>
-<span class="hljs-keyword">let</span> restApi = ...;
-<span class="hljs-keyword">let</span> { request, success, failure } = restApi.team.get;
+<a href="#matrixstring-config" id="matrixstring-config" style="color: inherit; text-decoration: none;">
+  <h3><code>matrix(string[][], [config])</code></h3>
+</a>
+<p>Creates an isomorphic and recursive key-value structure.
+Consider the Redux scenario below:</p>
+<p>You have a RESTful API with the following specification:</p>
+<ul>
+<li>The API can manipulate 3 types of resources; <code>user</code>, <code>team</code> and <code>group</code></li>
+<li>Each of them can be manipulated by these operations; <code>GET</code>, <code>POST</code>, <code>PUT</code>, and <code>DELETE</code><br>e.g. for <code>user</code> resource manipulation, there are totally 5 API endpoints:<ul>
+<li><code>POST /users</code> to create a user</li>
+<li><code>GET /users</code> to retrieve a user list</li>
+<li><code>GET /users/:id</code> to retrieve a specified user</li>
+<li><code>PUT /users/:id</code> to update a specified user</li>
+<li><code>DELETE /users/:id</code> to delete a specified user</li>
+</ul>
+</li>
+<li>In order to represent asynchronous API calls in Redux, there are 3 action types per each endpoint.<ul>
+<li><code>request</code> action: happens when api call has been fired</li>
+<li><code>success</code> action: happens when api call has been completed with success</li>
+<li><code>failure</code> action: happens when api call has been completed with failure</li>
+</ul>
+</li>
+</ul>
+<p>To create all of action types to meet the requirements above, you can simply write as follows:</p>
 
-<span class="hljs-comment">// get team</span>
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> id =&gt; dispatch =&gt; {
-  dispatch({
-    type: request,
-    payload: { id }
-  });
-  teamService
-    .getTeamById(id)
-    .then((team) =&gt;
-      dispatch({
-        type: success,
-        payload: { team }
-      })
-    , (failure) =&gt;
-      dispatch({
-        type: failure,
-        error: <span class="hljs-literal">true</span>,
-        payload: { failure }
-      })
-    );
-};
+<a href="#example-1" id="example-1" style="color: inherit; text-decoration: none;">
+  <h4>example</h4>
+</a>
+<pre><code class="language-js"><span class="hl-2">let</span><span class="hl-0"> </span><span class="hl-4">restApi</span><span class="hl-0"> = </span><span class="hl-5">matrix</span><span class="hl-0">([</span><br/><span class="hl-0">  [</span><span class="hl-3">&#39;user&#39;</span><span class="hl-0">, </span><span class="hl-3">&#39;team&#39;</span><span class="hl-0">, </span><span class="hl-3">&#39;group&#39;</span><span class="hl-0">],</span><br/><span class="hl-0">  [</span><span class="hl-3">&#39;get&#39;</span><span class="hl-0">, </span><span class="hl-3">&#39;getList&#39;</span><span class="hl-0">, </span><span class="hl-3">&#39;post&#39;</span><span class="hl-0">, </span><span class="hl-3">&#39;put&#39;</span><span class="hl-0">, </span><span class="hl-3">&#39;delete&#39;</span><span class="hl-0">],</span><br/><span class="hl-0">  [ </span><span class="hl-3">&#39;request&#39;</span><span class="hl-0">, </span><span class="hl-3">&#39;success&#39;</span><span class="hl-0">, </span><span class="hl-3">&#39;failure&#39;</span><span class="hl-0"> ]</span><br/><span class="hl-0">]);</span><br/><span class="hl-6">/*</span><br/><span class="hl-6"> restApi === {</span><br/><span class="hl-6">   user: {</span><br/><span class="hl-6">     get:     { request: &#39;user.get.request&#39;,      success: &#39;user.get.success&#39;,      failure: &#39;user.get.failure&#39; },</span><br/><span class="hl-6">     getList: { request: &#39;user.getList.request&#39;,  success: &#39;user.getList.success&#39;,  failure: &#39;user.getList.failure&#39; },</span><br/><span class="hl-6">     post:    { request: &#39;user.post.request&#39;,     success: &#39;user.post.success&#39;,     failure: &#39;user.post.failure&#39; },</span><br/><span class="hl-6">     put:     { request: &#39;user.put.request&#39;,      success: &#39;user.put.success&#39;,      failure: &#39;user.put.failure&#39; },</span><br/><span class="hl-6">     delete:  { request: &#39;user.delete.request&#39;,   success: &#39;user.delete.success&#39;,   failure: &#39;user.delete.failure&#39; },</span><br/><span class="hl-6">   },</span><br/><span class="hl-6">   team: {</span><br/><span class="hl-6">     get:     { request: &#39;team.get.request&#39;,      success: &#39;team.get.success&#39;,      failure: &#39;team.get.failure&#39; },</span><br/><span class="hl-6">     getList: { request: &#39;team.getList.request&#39;,  success: &#39;team.getList.success&#39;,  failure: &#39;team.getList.failure&#39; },</span><br/><span class="hl-6">     post:    { request: &#39;team.post.request&#39;,     success: &#39;team.post.success&#39;,     failure: &#39;team.post.failure&#39; },</span><br/><span class="hl-6">     put:     { request: &#39;team.put.request&#39;,      success: &#39;team.put.success&#39;,      failure: &#39;team.put.failure&#39; },</span><br/><span class="hl-6">     delete:  { request: &#39;team.delete.request&#39;,   success: &#39;team.delete.success&#39;,   failure: &#39;team.delete.failure&#39; },</span><br/><span class="hl-6">   },</span><br/><span class="hl-6">   group: {</span><br/><span class="hl-6">     get:     { request: &#39;group.get.request&#39;,     success: &#39;group.get.success&#39;,     failure: &#39;group.get.failure&#39; },</span><br/><span class="hl-6">     getList: { request: &#39;group.getList.request&#39;, success: &#39;group.getList.success&#39;, failure: &#39;group.getList.failure&#39; },</span><br/><span class="hl-6">     post:    { request: &#39;group.post.request&#39;,    success: &#39;group.post.success&#39;,    failure: &#39;group.post.failure&#39; },</span><br/><span class="hl-6">     put:     { request: &#39;group.put.request&#39;,     success: &#39;group.put.success&#39;,     failure: &#39;group.put.failure&#39; },</span><br/><span class="hl-6">     delete:  { request: &#39;group.delete.request&#39;,  success: &#39;group.delete.success&#39;,  failure: &#39;group.delete.failure&#39; },</span><br/><span class="hl-6">   }</span><br/><span class="hl-6"> }</span><br/><span class="hl-6"> */</span><br/><span class="hl-0"> </span><br/><span class="hl-6">// actions/getTeam.js</span><br/><span class="hl-2">let</span><span class="hl-0"> </span><span class="hl-4">restApi</span><span class="hl-0"> = ...;</span><br/><span class="hl-2">let</span><span class="hl-0"> { </span><span class="hl-4">request</span><span class="hl-0">, </span><span class="hl-4">success</span><span class="hl-0">, </span><span class="hl-4">failure</span><span class="hl-0"> } = </span><span class="hl-4">restApi</span><span class="hl-0">.</span><span class="hl-4">team</span><span class="hl-0">.</span><span class="hl-4">get</span><span class="hl-0">;</span><br/><br/><span class="hl-6">// get team</span><br/><span class="hl-7">export</span><span class="hl-0"> </span><span class="hl-7">default</span><span class="hl-0"> </span><span class="hl-4">id</span><span class="hl-0"> </span><span class="hl-2">=&gt;</span><span class="hl-0"> </span><span class="hl-4">dispatch</span><span class="hl-0"> </span><span class="hl-2">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">  </span><span class="hl-5">dispatch</span><span class="hl-0">({</span><br/><span class="hl-0">    </span><span class="hl-4">type:</span><span class="hl-0"> </span><span class="hl-4">request</span><span class="hl-0">,</span><br/><span class="hl-0">    </span><span class="hl-4">payload:</span><span class="hl-0"> { </span><span class="hl-4">id</span><span class="hl-0"> }</span><br/><span class="hl-0">  });</span><br/><span class="hl-0">  </span><span class="hl-4">teamService</span><br/><span class="hl-0">    .</span><span class="hl-5">getTeamById</span><span class="hl-0">(</span><span class="hl-4">id</span><span class="hl-0">)</span><br/><span class="hl-0">    .</span><span class="hl-5">then</span><span class="hl-0">((</span><span class="hl-4">team</span><span class="hl-0">) </span><span class="hl-2">=&gt;</span><br/><span class="hl-0">      </span><span class="hl-5">dispatch</span><span class="hl-0">({</span><br/><span class="hl-0">        </span><span class="hl-4">type:</span><span class="hl-0"> </span><span class="hl-4">success</span><span class="hl-0">,</span><br/><span class="hl-0">        </span><span class="hl-4">payload:</span><span class="hl-0"> { </span><span class="hl-4">team</span><span class="hl-0"> }</span><br/><span class="hl-0">      })</span><br/><span class="hl-0">    , (</span><span class="hl-4">failure</span><span class="hl-0">) </span><span class="hl-2">=&gt;</span><br/><span class="hl-0">      </span><span class="hl-5">dispatch</span><span class="hl-0">({</span><br/><span class="hl-0">        </span><span class="hl-4">type:</span><span class="hl-0"> </span><span class="hl-4">failure</span><span class="hl-0">,</span><br/><span class="hl-0">        </span><span class="hl-4">error:</span><span class="hl-0"> </span><span class="hl-2">true</span><span class="hl-0">,</span><br/><span class="hl-0">        </span><span class="hl-4">payload:</span><span class="hl-0"> { </span><span class="hl-4">failure</span><span class="hl-0"> }</span><br/><span class="hl-0">      })</span><br/><span class="hl-0">    );</span><br/><span class="hl-0">};</span>
 </code></pre>
-				<h3 id="-config-"><code>config</code></h3>
-				<p>Both <code>deepKeyMirror</code> and <code>matrix</code> can take <code>config</code> object as a second argument, which has these three options</p>
-				<table>
-					<thead>
-						<tr>
-							<th style="text-align:left">prop</th>
-							<th style="text-align:left">type</th>
-							<th style="text-align:left">default</th>
-							<th style="text-align:left">description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td style="text-align:left"><code>prependKeyPath</code></td>
-							<td style="text-align:left">boolean</td>
-							<td style="text-align:left">true</td>
-							<td style="text-align:left">When set to <code>true</code> and if <code>deepKeyMirror</code> find a string value during object traversal, it uses the string prepended by concatenated object path as its mirrored path.</td>
-						</tr>
-						<tr>
-							<td style="text-align:left"><code>keyJoinString</code></td>
-							<td style="text-align:left">string</td>
-							<td style="text-align:left"><code>&#39;.&#39;</code></td>
-							<td style="text-align:left">Separator for joining object paths.</td>
-						</tr>
-						<tr>
-							<td style="text-align:left"><code>makeUpperCase</code></td>
-							<td style="text-align:left">boolean</td>
-							<td style="text-align:left">false</td>
-							<td style="text-align:left">When set to <code>true</code>, values will be mirrored with uppercase.</td>
-						</tr>
-					</tbody>
-				</table>
-				<h4 id="examples">examples</h4>
-				<pre><code class="lang-js"><span class="hljs-keyword">let</span> props = {
-  color: {
-    red: <span class="hljs-literal">null</span>,
-    green: <span class="hljs-literal">null</span>,
-    blue: <span class="hljs-string">'not_an_yellow'</span>,
-    other: {
-      brown: <span class="hljs-string">'maroon'</span>
-    }
-  }
-};
 
-<span class="hljs-keyword">let</span> propConfig = deepKeyMirror(props, { prependKeyPath: <span class="hljs-literal">true</span> });
-<span class="hljs-comment">/*
-props = {
-  color: {
-    red: 'color.red',
-    green: 'color.green',
-    blue: 'color.not_an_yellow',
-    other: {
-      brown: 'color.other.maroon'
-    }
-  }
-};
-*/</span>
+<a href="#config" id="config" style="color: inherit; text-decoration: none;">
+  <h3><code>config</code></h3>
+</a>
+<p>Both <code>deepKeyMirror</code> and <code>matrix</code> can take <code>config</code> object as a second argument, which has these three options</p>
+<table>
+<thead>
+<tr>
+<th align="left">prop</th>
+<th align="left">type</th>
+<th align="left">default</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>prependKeyPath</code></td>
+<td align="left">boolean</td>
+<td align="left">true</td>
+<td align="left">When set to <code>true</code> and if <code>deepKeyMirror</code> find a string value during object traversal, it uses the string prepended by concatenated object path as its mirrored path.</td>
+</tr>
+<tr>
+<td align="left"><code>keyJoinString</code></td>
+<td align="left">string</td>
+<td align="left"><code>&#39;.&#39;</code></td>
+<td align="left">Separator for joining object paths.</td>
+</tr>
+<tr>
+<td align="left"><code>makeUpperCase</code></td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">When set to <code>true</code>, values will be mirrored with uppercase.</td>
+</tr>
+</tbody></table>
 
-<span class="hljs-keyword">let</span> propConfig = deepKeyMirror(props, { prependKeyPath: <span class="hljs-literal">false</span> });
-<span class="hljs-comment">/*
-props = {
-  color: {
-    red: 'color.red',
-    green: 'color.green',
-    blue: 'not_an_yellow',
-    other: {
-      brown: 'maroon'
-    }
-  }
-};
-*/</span>
-
-<span class="hljs-keyword">let</span> propConfig = deepKeyMirror(props, { keyJoinString: <span class="hljs-string">'-'</span> });
-<span class="hljs-comment">/*
-props = {
-  color: {
-    red: 'color-red',
-    green: 'color-green',
-    blue: 'color-not_an_yellow',
-    other: {
-      brown: 'color-other-maroon'
-    }
-  }
-};
-*/</span>
-
-<span class="hljs-keyword">let</span> propConfig = deepKeyMirror(props, { makeUpperCase: <span class="hljs-literal">true</span> });
-<span class="hljs-comment">/*
-props = {
-  color: {
-    red: 'COLOR.RED',
-    green: 'COLOR.GREEN',
-    blue: 'COLOR.NOT_AN_YELLOW',
-    other: {
-      brown: 'COLOR.OTHER.MAROON'
-    }
-  }
-};
-*/</span>
+<a href="#examples" id="examples" style="color: inherit; text-decoration: none;">
+  <h4>examples</h4>
+</a>
+<pre><code class="language-js"><span class="hl-2">let</span><span class="hl-0"> </span><span class="hl-4">props</span><span class="hl-0"> = {</span><br/><span class="hl-0">  </span><span class="hl-4">color:</span><span class="hl-0"> {</span><br/><span class="hl-0">    </span><span class="hl-4">red:</span><span class="hl-0"> </span><span class="hl-2">null</span><span class="hl-0">,</span><br/><span class="hl-0">    </span><span class="hl-4">green:</span><span class="hl-0"> </span><span class="hl-2">null</span><span class="hl-0">,</span><br/><span class="hl-0">    </span><span class="hl-4">blue:</span><span class="hl-0"> </span><span class="hl-3">&#39;not_an_yellow&#39;</span><span class="hl-0">,</span><br/><span class="hl-0">    </span><span class="hl-4">other:</span><span class="hl-0"> {</span><br/><span class="hl-0">      </span><span class="hl-4">brown:</span><span class="hl-0"> </span><span class="hl-3">&#39;maroon&#39;</span><br/><span class="hl-0">    }</span><br/><span class="hl-0">  }</span><br/><span class="hl-0">};</span><br/><br/><span class="hl-2">let</span><span class="hl-0"> </span><span class="hl-4">propConfig</span><span class="hl-0"> = </span><span class="hl-5">deepKeyMirror</span><span class="hl-0">(</span><span class="hl-4">props</span><span class="hl-0">, { </span><span class="hl-4">prependKeyPath:</span><span class="hl-0"> </span><span class="hl-2">true</span><span class="hl-0"> });</span><br/><span class="hl-6">/*</span><br/><span class="hl-6">props = {</span><br/><span class="hl-6">  color: {</span><br/><span class="hl-6">    red: &#39;color.red&#39;,</span><br/><span class="hl-6">    green: &#39;color.green&#39;,</span><br/><span class="hl-6">    blue: &#39;color.not_an_yellow&#39;,</span><br/><span class="hl-6">    other: {</span><br/><span class="hl-6">      brown: &#39;color.other.maroon&#39;</span><br/><span class="hl-6">    }</span><br/><span class="hl-6">  }</span><br/><span class="hl-6">};</span><br/><span class="hl-6">*/</span><br/><br/><span class="hl-2">let</span><span class="hl-0"> </span><span class="hl-4">propConfig</span><span class="hl-0"> = </span><span class="hl-5">deepKeyMirror</span><span class="hl-0">(</span><span class="hl-4">props</span><span class="hl-0">, { </span><span class="hl-4">prependKeyPath:</span><span class="hl-0"> </span><span class="hl-2">false</span><span class="hl-0"> });</span><br/><span class="hl-6">/*</span><br/><span class="hl-6">props = {</span><br/><span class="hl-6">  color: {</span><br/><span class="hl-6">    red: &#39;color.red&#39;,</span><br/><span class="hl-6">    green: &#39;color.green&#39;,</span><br/><span class="hl-6">    blue: &#39;not_an_yellow&#39;,</span><br/><span class="hl-6">    other: {</span><br/><span class="hl-6">      brown: &#39;maroon&#39;</span><br/><span class="hl-6">    }</span><br/><span class="hl-6">  }</span><br/><span class="hl-6">};</span><br/><span class="hl-6">*/</span><br/><br/><span class="hl-2">let</span><span class="hl-0"> </span><span class="hl-4">propConfig</span><span class="hl-0"> = </span><span class="hl-5">deepKeyMirror</span><span class="hl-0">(</span><span class="hl-4">props</span><span class="hl-0">, { </span><span class="hl-4">keyJoinString:</span><span class="hl-0"> </span><span class="hl-3">&#39;-&#39;</span><span class="hl-0"> });</span><br/><span class="hl-6">/*</span><br/><span class="hl-6">props = {</span><br/><span class="hl-6">  color: {</span><br/><span class="hl-6">    red: &#39;color-red&#39;,</span><br/><span class="hl-6">    green: &#39;color-green&#39;,</span><br/><span class="hl-6">    blue: &#39;color-not_an_yellow&#39;,</span><br/><span class="hl-6">    other: {</span><br/><span class="hl-6">      brown: &#39;color-other-maroon&#39;</span><br/><span class="hl-6">    }</span><br/><span class="hl-6">  }</span><br/><span class="hl-6">};</span><br/><span class="hl-6">*/</span><br/><br/><span class="hl-2">let</span><span class="hl-0"> </span><span class="hl-4">propConfig</span><span class="hl-0"> = </span><span class="hl-5">deepKeyMirror</span><span class="hl-0">(</span><span class="hl-4">props</span><span class="hl-0">, { </span><span class="hl-4">makeUpperCase:</span><span class="hl-0"> </span><span class="hl-2">true</span><span class="hl-0"> });</span><br/><span class="hl-6">/*</span><br/><span class="hl-6">props = {</span><br/><span class="hl-6">  color: {</span><br/><span class="hl-6">    red: &#39;COLOR.RED&#39;,</span><br/><span class="hl-6">    green: &#39;COLOR.GREEN&#39;,</span><br/><span class="hl-6">    blue: &#39;COLOR.NOT_AN_YELLOW&#39;,</span><br/><span class="hl-6">    other: {</span><br/><span class="hl-6">      brown: &#39;COLOR.OTHER.MAROON&#39;</span><br/><span class="hl-6">    }</span><br/><span class="hl-6">  }</span><br/><span class="hl-6">};</span><br/><span class="hl-6">*/</span>
 </code></pre>
-				<h2 id="typescript">TypeScript</h2>
-				<p>TypeDoc-generated documentation is available <a href="http://tkqubo.github.io/deep-key-mirror/">here</a></p>
-			</div>
-		</div>
-		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
-			<nav class="tsd-navigation primary">
-				<ul>
-					<li class="globals  ">
-						<a href="globals.html"><em>Globals</em></a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_deep_key_mirror_.html">"deep-<wbr>key-<wbr>mirror"</a>
-					</li>
-				</ul>
-			</nav>
-			<nav class="tsd-navigation secondary menu-sticky">
-				<ul class="before-current">
-				</ul>
-			</nav>
-		</div>
-	</div>
-</div>
-<footer class="with-border-bottom">
-	<div class="container">
-		<h2>Legend</h2>
-		<div class="tsd-legend-group">
-			<ul class="tsd-legend">
-				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
-				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
-				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
-				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
-				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
-				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
-				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
-				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
-				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
-				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
-			</ul>
-		</div>
-	</div>
-</footer>
-<div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.io" target="_blank">TypeDoc</a></p>
-</div>
-<div class="overlay"></div>
-<script src="assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
-</body>
-</html>
+
+<a href="#typescript" id="typescript" style="color: inherit; text-decoration: none;">
+  <h2>TypeScript</h2>
+</a>
+<p>TypeDoc-generated documentation is available <a href="http://tkqubo.github.io/deep-key-mirror/">here</a></p>
+</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Exports</a></li></ul></nav><nav class="tsd-navigation secondary menu-sticky"><ul><li class="tsd-kind-class"><a href="classes/DeepKeyMirror.html" class="tsd-kind-icon">Deep<wbr/>Key<wbr/>Mirror</a></li><li class="tsd-kind-interface"><a href="interfaces/Config.html" class="tsd-kind-icon">Config</a></li><li class="tsd-kind-variable"><a href="modules.html#DefaultConfig" class="tsd-kind-icon">Default<wbr/>Config</a></li><li class="tsd-kind-function"><a href="modules.html#matrix" class="tsd-kind-icon">matrix</a></li></ul></nav></div></div></div><footer class="with-border-bottom"><div class="container"><h2>Legend</h2><div class="tsd-legend-group"><ul class="tsd-legend"><li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li><li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li><li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li></ul></div><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="container tsd-generator"><p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div><div class="overlay"></div><script src="assets/main.js"></script></body></html>

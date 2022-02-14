@@ -33,30 +33,26 @@ export default function deepKeyMirror(obj: any, config?: Config): any;
  * @param config
  * @returns {any}
  */
-export declare function matrix(keyMap: string[][], config?: Config): any;
+export declare function matrix(keyMap: string[][] | null | undefined, config?: Config): any;
 /** Class responsible for key mirror generation */
 export declare class DeepKeyMirror {
     config: Config;
     constructor(config: Config);
     deepKeyMirror(obj: any): any;
-    matrix(keyMap: string[][]): any;
+    matrix(keyMap: string[][] | null | undefined): any;
     /**
      * @param obj
      * @param paths
      * @returns {any}
      * @private
      */
-    private doDeepKeyMirror(obj, paths);
+    private doDeepKeyMirror;
     /**
      * @param paths
      * @returns {any}
      * @private
      */
-    private buildValue(paths);
-    /**
-     * @param obj
-     * @returns {boolean}
-     * @private
-     */
-    private isNullLike(obj);
+    private buildValue;
+    private isDefined;
 }
+//# sourceMappingURL=deep-key-mirror.d.ts.map

@@ -1,5 +1,4 @@
-'use strict';
-import * as _ from 'lodash';
+import _ from 'lodash';
 
 /**
  * Configuration for `deepKeyMirror`
@@ -46,27 +45,27 @@ export default function deepKeyMirror(obj: any, config?: Config): any {
  * @param config
  * @returns {any}
  */
-export function matrix(keyMap: string[][], config?: Config) {
-  'use strict';
+export function matrix(keyMap: string[][] | null | undefined, config?: Config) {
   return new DeepKeyMirror(_.assign({}, DefaultConfig, config)).matrix(keyMap);
 }
 
 /** Class responsible for key mirror generation */
 export class DeepKeyMirror {
-  constructor(public config: Config) { }
+  constructor(public config: Config) {
+  }
 
   deepKeyMirror(obj: any): any {
     return this.doDeepKeyMirror(obj, []);
   }
 
-  matrix(keyMap: string[][]): any {
-    if (this.isNullLike(keyMap)) {
+  matrix(keyMap: string[][] | null | undefined): any {
+    if (!this.isDefined(keyMap)) {
       return keyMap;
     }
 
     let matrix: any = null;
     while (keyMap.length) {
-      let keys: string[] = keyMap.pop();
+      const keys: string[] = keyMap.pop()!;
       if (!matrix) {
         matrix = keys;
       } else {
@@ -93,7 +92,7 @@ export class DeepKeyMirror {
    * @private
    */
   private doDeepKeyMirror(obj: any, paths: string[]): any {
-    if (this.isNullLike(obj)) {
+    if (!this.isDefined(obj)) {
       return obj;
     }
 
@@ -103,7 +102,7 @@ export class DeepKeyMirror {
 
     if (_.isString(obj)) {
       if (this.config.prependKeyPath) {
-        let parentPaths = _.dropRight(paths, 1);
+        const parentPaths = _.dropRight(paths, 1);
         return this.buildValue(parentPaths.concat(obj));
       } else {
         return obj;
@@ -124,15 +123,15 @@ export class DeepKeyMirror {
         {} as any);
     }
 
-    let properties: string[] = Object
+    const properties: string[] = Object
       .keys(obj)
-      .filter((prop: string) => obj.hasOwnProperty(prop));
+      .filter((prop: string) => prop in obj);
     if (properties.length === 0) {
       return obj;
     }
 
     obj = _.assign({}, obj);
-    let [emptyProps, nonEmptyProps] = _.partition(properties, (prop: string) => this.isNullLike(obj[prop]));
+    const [emptyProps, nonEmptyProps] = _.partition(properties, (prop: string) => !this.isDefined(obj[prop]));
     // assign prop name if its value is null or undefined
     emptyProps
       .forEach((prop: string) => obj[prop] = this.buildValue(paths.concat(prop)));
@@ -153,12 +152,7 @@ export class DeepKeyMirror {
       .join(this.config.keyJoinString);
   }
 
-  /**
-   * @param obj
-   * @returns {boolean}
-   * @private
-   */
-  private isNullLike(obj: any): boolean {
-    return _.isNull(obj) || _.isUndefined(obj);
+  private isDefined<T>(value: T): value is NonNullable<T> {
+    return value !== null && value !== undefined;
   }
 }
