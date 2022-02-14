@@ -1,4 +1,4 @@
-name: Deep Key Mirror CI
+name: CI
 
 on:
   push:

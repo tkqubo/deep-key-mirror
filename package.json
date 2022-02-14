@@ -1,6 +1,6 @@
 {
   "name": "deep-key-mirror",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Alternative to React's keyMirror",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
@@ -9,7 +9,7 @@
     "build": "npm run build:tsc && npm run lint && npm run docs",
     "build:tsc": "npm run clean && tsc",
     "start": "npm run build",
-    "test": "npm run build && npm run test:jest:cov",
+    "test": "npm run build && npm run test:jest",
     "test:jest": "jest",
     "test:jest:cov": "jest --coverage --force-exit --detectOpenHandles",
     "test:jest:watch": "jest --watch --detectOpenHandles",
