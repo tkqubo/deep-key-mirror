@@ -1,8 +1,10 @@
 # Deep Key Mirror
+
 [![npm version](https://badge.fury.io/js/deep-key-mirror.svg)](http://badge.fury.io/js/deep-key-mirror)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 
-Alternative to React's keyMirror 
+Alternative to React's [keyMirror](https://github.com/STRML/keyMirror) which further mirrors properties deep inside the
+object graph.
 
 ## Installation
 
@@ -12,29 +14,36 @@ npm install deep-key-mirror
 
 ## Usage
 
-### `deepKeyMirror(any, [config])`
+### 1. `deepKeyMirror(obj, [config])`
 
-Constructs an enumeration with keys equal to their value.
+Returns a new object that has values equal to its property names in the given object.
 
-If the given object has child arrays or objects, they are also "key-mirrored" recursively,
-with the `'.'`-concatenated paths from the root object assigned to each of their value.
- 
-#### example
+#### Simple example
 
-```js
-let breakfast = {
+```ts
+import deepKeyMirror from 'deep-key-mirror';
+
+deepKeyMirror({ null: '', age: null }); // { name: 'name', age: 'age' }
+```
+
+If the given object has child arrays or objects, they are also "key-mirrored" recursively, with the `.`-concatenated
+paths from the root object assigned to each of their value.
+
+#### Nested example
+
+```ts
+import deepKeyMirror from 'deep-key-mirror';
+
+const breakfast = {
   bread: null,
   beverage: {
     milk: null,
     coffee: null,
-    beer: "BEER!"
+    beer: 'BEER!',
   },
-  fruits: [
-    'orange',
-    'apple'
-  ]
+  fruits: ['orange', 'apple'],
 };
-let breakfastConfig = deepKeyMirror(breakfast);
+const breakfastConfig = deepKeyMirror(breakfast);
 /*
 breakfastConfig === {
   bread: 'bread',
@@ -49,38 +58,19 @@ breakfastConfig === {
   }
 }
 */
-
 ```
 
-### `matrix(string[][], [config])`
+### 2. `matrix(string[][], [config])`
 
-Creates an isomorphic and recursive key-value structure.
-Consider the Redux scenario below:
- 
-You have a RESTful API with the following specification:
+Converts an two-dimensional dimensional array into an object with an isomorphic key-value structure.
 
-- The API can manipulate 3 types of resources; `user`, `team` and `group`
-- Each of them can be manipulated by these operations; `GET`, `POST`, `PUT`, and `DELETE`  
-  e.g. for `user` resource manipulation, there are totally 5 API endpoints:
-  - `POST /users` to create a user
-  - `GET /users` to retrieve a user list
-  - `GET /users/:id` to retrieve a specified user
-  - `PUT /users/:id` to update a specified user
-  - `DELETE /users/:id` to delete a specified user
-- In order to represent asynchronous API calls in Redux, there are 3 action types per each endpoint.
-  - `request` action: happens when api call has been fired
-  - `success` action: happens when api call has been completed with success
-  - `failure` action: happens when api call has been completed with failure
-
-To create all of action types to meet the requirements above, you can simply write as follows:
-
-#### example
+#### Example
 
 ```js
-let restApi = matrix([
+const restApi = matrix([
   ['user', 'team', 'group'],
   ['get', 'getList', 'post', 'put', 'delete'],
-  [ 'request', 'success', 'failure' ]
+  ['request', 'success', 'failure'],
 ]);
 /*
  restApi === {
@@ -107,61 +97,35 @@ let restApi = matrix([
    }
  }
  */
- 
-// actions/getTeam.js
-let restApi = ...;
-let { request, success, failure } = restApi.team.get;
-
-// get team
-export default id => dispatch => {
-  dispatch({
-    type: request,
-    payload: { id }
-  });
-  teamService
-    .getTeamById(id)
-    .then((team) =>
-      dispatch({
-        type: success,
-        payload: { team }
-      })
-    , (failure) =>
-      dispatch({
-        type: failure,
-        error: true,
-        payload: { failure }
-      })
-    );
-};
 ```
 
 ### `config`
 
 Both `deepKeyMirror` and `matrix` can take `config` object as a second argument, which has these three options
 
-| prop             | type    | default | description                                                                                                                                                           |
-|:-----------------|:--------|:--------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `prependKeyPath` | boolean | true    | When set to `true` and if `deepKeyMirror` find a string value during object traversal, it uses the string prepended by concatenated object path as its mirrored path. |
-| `keyJoinString`  | string  | `'.'`   | Separator for joining object paths.                                                                                                                                   |
-| `makeUpperCase`  | boolean | false   | When set to `true`, values will be mirrored with uppercase.                                                                                                           |
+| prop         | type    | default | description                                                                             |
+| :----------- | :------ | :------ | :-------------------------------------------------------------------------------------- |
+| `retain`     | boolean | false   | When set to `true`, primitive values other than `null` or `undefined` won't be replaced |
+| `joinString` | string  | `'.'`   | Separator for joining object paths.                                                     |
+| `upperCase`  | boolean | false   | When set to `true`, values will be mirrored with uppercase.                             |
 
 #### examples
 
 ```js
-let props = {
+const props = {
   color: {
     red: null,
     green: null,
     blue: 'not_an_yellow',
     other: {
-      brown: 'maroon'
-    }
-  }
+      brown: 'maroon',
+    },
+  },
 };
 
-let propConfig = deepKeyMirror(props, { prependKeyPath: true });
+const propConfig = deepKeyMirror(props, { prependKeyPath: true });
 /*
-props = {
+propConfig = {
   color: {
     red: 'color.red',
     green: 'color.green',
@@ -173,9 +137,9 @@ props = {
 };
 */
 
-let propConfig = deepKeyMirror(props, { prependKeyPath: false });
+const propConfig = deepKeyMirror(props, { prependKeyPath: false });
 /*
-props = {
+propConfig = {
   color: {
     red: 'color.red',
     green: 'color.green',
@@ -187,9 +151,9 @@ props = {
 };
 */
 
-let propConfig = deepKeyMirror(props, { keyJoinString: '-' });
+const propConfig = deepKeyMirror(props, { keyJoinString: '-' });
 /*
-props = {
+propConfig = {
   color: {
     red: 'color-red',
     green: 'color-green',
@@ -201,9 +165,9 @@ props = {
 };
 */
 
-let propConfig = deepKeyMirror(props, { makeUpperCase: true });
+const propConfig = deepKeyMirror(props, { makeUpperCase: true });
 /*
-props = {
+propConfig = {
   color: {
     red: 'COLOR.RED',
     green: 'COLOR.GREEN',

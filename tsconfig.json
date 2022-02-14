@@ -30,5 +30,6 @@
     // "noUnusedParameters": true,
     "noImplicitOverride": true,
     "noImplicitReturns": true
-  }
+  },
+  "include": ["./jest.config.ts", "./src/**/*", "./test/**/*"]
 }

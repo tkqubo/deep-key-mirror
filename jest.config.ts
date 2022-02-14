@@ -1,4 +1,4 @@
-import type {Config} from '@jest/types';
+import type { Config } from '@jest/types';
 
 const jestConfig: Config.InitialOptions = {
   moduleFileExtensions: ['js', 'json', 'ts'],
