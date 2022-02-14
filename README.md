@@ -2,6 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/deep-key-mirror.svg)](http://badge.fury.io/js/deep-key-mirror)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
+[![Deep Key Mirror CI](https://github.com/tkqubo/deep-key-mirror/actions/workflows/build.yml/badge.svg)](https://github.com/tkqubo/deep-key-mirror/actions/workflows/build.yml)
 
 Alternative to React's [keyMirror](https://github.com/STRML/keyMirror) which further mirrors properties deep inside the
 object graph.
