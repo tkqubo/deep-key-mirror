@@ -5,7 +5,7 @@
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
   "scripts": {
-    "clean": "rm -rfv dist && touch docs/.nojekyll",
+    "clean": "rm -rfv dist",
     "build": "npm run build:tsc && npm run lint && npm run docs",
     "build:tsc": "npm run clean && tsc",
     "start": "npm run build",
@@ -20,7 +20,7 @@
     "fix": "npm run fix:eslint && npm run fix:prettier",
     "fix:eslint": "npm run lint:eslint --fix",
     "fix:prettier": "yarn lint:prettier --write",
-    "docs": "typedoc --out docs --exclude '**/index.ts' src/",
+    "docs": "typedoc --out docs --exclude '**/index.ts' src/ && touch docs/.nojekyll",
     "docs:publish": "npm run docs && git push origin :gh-pages; git subtree push --prefix docs/ origin gh-pages",
     "prepublish": "npm run build"
   },
