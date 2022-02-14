@@ -17,6 +17,7 @@
     "lint": "eslint .",
     "fix": "npm run lint --fix",
     "docs": "typedoc --out docs --exclude '**/index.ts' src/",
+    "docs:publish": "npm run docs && git push origin :gh-pages && git subtree push --prefix docs/ origin gh-pages",
     "prepublish": "npm run build"
   },
   "repository": {
