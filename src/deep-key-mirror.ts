@@ -31,7 +31,7 @@ function doDeepKeyMirror(obj: any, paths: string[], config: Config): any {
 
   if (obj instanceof Array) {
     return obj.reduce(
-      (prev, curr) => ({ ...prev, [curr]: joinPaths(paths.concat(String(curr)), config) }),
+      (prev, curr) => ({ ...prev, [curr]: doDeepKeyMirror(curr, paths.concat(String(curr)), config) }),
       {} as object,
     );
   }
