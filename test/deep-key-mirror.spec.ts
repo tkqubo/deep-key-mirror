@@ -1,5 +1,5 @@
-import { deepEqual } from 'power-assert';
-import { deepKeyMirror } from '../src';
+import {deepEqual} from 'power-assert';
+import {deepKeyMirror} from '../src';
 import 'jest';
 
 // not an object nor an array
@@ -102,21 +102,21 @@ describe('deepKeyMirror', () => {
 
       it('supplies path-concatenated prop name to its value', () => {
         const actual = deepKeyMirror({
-          user: {
-            created: null,
-            updated: null,
-            deleted: null,
-          },
-          status: ['start', 'stop'],
-          other: {
-            fixed: 'other_value',
-            misc: {
-              miscA: null,
-              miscB: undefined,
-              miscZ: 'Z',
-            },
-          },
-        });
+                                       user: {
+                                         created: null,
+                                         updated: null,
+                                         deleted: null,
+                                       },
+                                       status: ['start', 'stop'],
+                                       other: {
+                                         fixed: 'other_value',
+                                         misc: {
+                                           miscA: null,
+                                           miscB: undefined,
+                                           miscZ: 'Z',
+                                         },
+                                       },
+                                     });
         const expected = {
           user: {
             created: 'user.created',
@@ -162,12 +162,12 @@ describe('deepKeyMirror', () => {
               value: 'nested.yetNested.value',
               array: {
                 a: 'nested.yetNested.array.a',
-                '42': 'nested.yetNested.array.42',
+                '42': 42,
               },
             },
           },
         };
-        const actual = deepKeyMirror(input, { retain: true });
+        const actual = deepKeyMirror(input, {retain: true});
         deepEqual(actual, expected);
       });
 
@@ -191,7 +191,7 @@ describe('deepKeyMirror', () => {
           bigint: 42n,
           symbol: symbol,
         };
-        const actual = deepKeyMirror(input, { retain: true });
+        const actual = deepKeyMirror(input, {retain: true});
         deepEqual(actual, expected);
       });
 
@@ -209,7 +209,7 @@ describe('deepKeyMirror', () => {
             },
           },
         };
-        const actual = deepKeyMirror(input, { retain: false });
+        const actual = deepKeyMirror(input, {retain: false});
         deepEqual(actual, expected);
       });
     });
@@ -229,7 +229,7 @@ describe('deepKeyMirror', () => {
             },
           },
         };
-        const actual = deepKeyMirror(input, { joinString: '_' });
+        const actual = deepKeyMirror(input, {joinString: '_'});
         deepEqual(actual, expected);
       });
     });
@@ -249,9 +249,80 @@ describe('deepKeyMirror', () => {
             },
           },
         };
-        const actual = deepKeyMirror(input, { upperCase: true });
+        const actual = deepKeyMirror(input, {upperCase: true});
         deepEqual(actual, expected);
       });
     });
+
+
+    test('example in README.md', () => {
+      const props = {
+        color: {
+          red: null,
+          green: 42,
+          blue: 'not_an_yellow',
+          other: {
+            brown: 'maroon',
+            darkness: ['bright', 1, false],
+          },
+        },
+      };
+
+      deepEqual(
+        deepKeyMirror(props, {retain: true}),
+        {
+          color: {
+            red: 'color.red',
+            green: 42,
+            blue: 'color.not_an_yellow',
+            other: {
+              brown: 'color.other.maroon',
+              darkness: {
+                '1': 1,
+                bright: 'color.other.darkness.bright',
+                false: false
+              }
+            }
+          }
+        });
+
+      deepEqual(
+        deepKeyMirror(props, {joinString: '-'}),
+        {
+          color: {
+            red: 'color-red',
+            green: 'color-green',
+            blue: 'color-blue',
+            other: {
+              brown: 'color-other-brown',
+              darkness: {
+                '1': 'color-other-darkness-1',
+                bright: 'color-other-darkness-bright',
+                false: 'color-other-darkness-false'
+              }
+            }
+          }
+        });
+
+      deepEqual(
+        deepKeyMirror(props, {upperCase: true}),
+        {
+          color: {
+            red: 'COLOR.RED',
+            green: 'COLOR.GREEN',
+            blue: 'COLOR.BLUE',
+            other: {
+              brown: 'COLOR.OTHER.BROWN',
+              darkness: {
+                '1': 'COLOR.OTHER.DARKNESS.1',
+                bright: 'COLOR.OTHER.DARKNESS.BRIGHT',
+                false: 'COLOR.OTHER.DARKNESS.FALSE'
+              }
+            }
+          }
+        });
+    });
   });
 });
+
+

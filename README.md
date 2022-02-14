@@ -44,14 +44,14 @@ const breakfast = {
   },
   fruits: ['orange', 'apple'],
 };
-const breakfastConfig = deepKeyMirror(breakfast);
+const mirrored = deepKeyMirror(breakfast);
 /*
-breakfastConfig === {
+mirrored === {
   bread: 'bread',
   beverage: {
-   milk: 'beverage.milk',
-   coffee: 'beverage.coffee',
-   beer: 'beverage.BEER!'
+    milk: 'beverage.milk',
+    coffee: 'beverage.coffee',
+    beer: 'beverage.beer'
   },
   fruits: {
     orange: 'fruits.orange',
@@ -112,73 +112,72 @@ Both `deepKeyMirror` and `matrix` can take `config` object as a second argument,
 
 #### examples
 
-```js
+```ts
 const props = {
   color: {
     red: null,
-    green: null,
+    green: 42,
     blue: 'not_an_yellow',
     other: {
       brown: 'maroon',
+      darkness: ['bright', 1, false],
     },
   },
 };
 
-const propConfig = deepKeyMirror(props, { prependKeyPath: true });
-/*
-propConfig = {
-  color: {
-    red: 'color.red',
-    green: 'color.green',
-    blue: 'color.not_an_yellow',
-    other: {
-      brown: 'color.other.maroon'
+deepEqual(
+  deepKeyMirror(props, {retain: true}),
+  {
+    color: {
+      red: 'color.red',
+      green: 42,
+      blue: 'color.not_an_yellow',
+      other: {
+        brown: 'color.other.maroon',
+        darkness: {
+          '1': 1,
+          bright: 'color.other.darkness.bright',
+          false: false
+        }
+      }
     }
-  }
-};
-*/
+  });
 
-const propConfig = deepKeyMirror(props, { prependKeyPath: false });
-/*
-propConfig = {
-  color: {
-    red: 'color.red',
-    green: 'color.green',
-    blue: 'not_an_yellow',
-    other: {
-      brown: 'maroon'
+deepEqual(
+  deepKeyMirror(props, {joinString: '-'}),
+  {
+    color: {
+      red: 'color-red',
+      green: 'color-green',
+      blue: 'color-blue',
+      other: {
+        brown: 'color-other-brown',
+        darkness: {
+          '1': 'color-other-darkness-1',
+          bright: 'color-other-darkness-bright',
+          false: 'color-other-darkness-false'
+        }
+      }
     }
-  }
-};
-*/
+  });
 
-const propConfig = deepKeyMirror(props, { keyJoinString: '-' });
-/*
-propConfig = {
-  color: {
-    red: 'color-red',
-    green: 'color-green',
-    blue: 'color-not_an_yellow',
-    other: {
-      brown: 'color-other-maroon'
+deepEqual(
+  deepKeyMirror(props, {upperCase: true}),
+  {
+    color: {
+      red: 'COLOR.RED',
+      green: 'COLOR.GREEN',
+      blue: 'COLOR.BLUE',
+      other: {
+        brown: 'COLOR.OTHER.BROWN',
+        darkness: {
+          '1': 'COLOR.OTHER.DARKNESS.1',
+          bright: 'COLOR.OTHER.DARKNESS.BRIGHT',
+          false: 'COLOR.OTHER.DARKNESS.FALSE'
+        }
+      }
     }
-  }
-};
-*/
-
-const propConfig = deepKeyMirror(props, { makeUpperCase: true });
-/*
-propConfig = {
-  color: {
-    red: 'COLOR.RED',
-    green: 'COLOR.GREEN',
-    blue: 'COLOR.NOT_AN_YELLOW',
-    other: {
-      brown: 'COLOR.OTHER.MAROON'
-    }
-  }
-};
-*/
+  });
 ```
 
 ## TypeScript
