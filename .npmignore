@@ -2,6 +2,4 @@
 src
 test
 coverage
-.travis.yml
 tsconfig.json
-tsd.json

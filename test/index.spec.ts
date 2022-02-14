@@ -48,12 +48,12 @@ describe('deepKeyMirror', () => {
 
   describe('with a flat object', () => {
     it('supplies key name itself to its value', () => {
-      const obj: any = {name: null, action: undefined};
+      const obj = {name: null, action: undefined};
       assert(deepKeyMirror(obj).name === 'name');
       assert(deepKeyMirror(obj).action === 'action');
     });
     it('does nothing when value is not null nor undefined', () => {
-      const obj: any = {name: 'some name', action: null};
+      const obj = {name: 'some name', action: null};
       assert(deepKeyMirror(obj).name === 'some name');
       assert(deepKeyMirror(obj).action === 'action');
     });
@@ -61,7 +61,7 @@ describe('deepKeyMirror', () => {
 
   describe('with a nested object', () => {
     it('supplies path-concatenated prop name to its value', () => {
-      const breakfast: any = {
+      const breakfast = {
         bread: null,
         beverage: {
           milk: null,
@@ -98,7 +98,7 @@ describe('deepKeyMirror', () => {
                                        }
                                      }
                                    });
-      const expected: any = {
+      const expected = {
         user: {
           created: 'user.created',
           updated: 'user.updated',
@@ -156,7 +156,7 @@ describe('matrix', () => {
     deepEqual(actual, expected);
   });
   it('processes action names of async operation', () => {
-    const actual: any = matrix(
+    const actual = matrix(
       [
         ['user', 'team', 'group'],
         ['get', 'getList', 'post', 'put', 'delete'],
@@ -175,7 +175,7 @@ describe('matrix', () => {
 describe('Config', () => {
   describe('.prependKeyPath', () => {
     it('doesn\'t prepend key path whtn set to false', () => {
-      const expected: any = {
+      const expected = {
         value: 'const',
         nested: {
           value: 'nested_const',
@@ -188,7 +188,7 @@ describe('Config', () => {
       deepEqual(actual, expected);
     });
     it('prepends key path when set to true', () => {
-      const expected: any = {
+      const expected = {
         value: 'const',
         nested: {
           value: 'nested.nested_const',
@@ -214,7 +214,7 @@ describe('Config', () => {
 
   describe('.keyJoinString', () => {
     it('join key path with "_" with set to "_"', () => {
-      const expected: any = {
+      const expected = {
         value: 'const',
         nested: {
           value: 'nested_nested_const',
@@ -240,7 +240,7 @@ describe('Config', () => {
 
   describe('.makeUpperCase', () => {
     it('makes key upper case when set to true', () => {
-      const expected: any = {
+      const expected = {
         value: 'CONST',
         nested: {
           value: 'NESTED.NESTED_CONST',
