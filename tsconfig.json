@@ -1,17 +1,34 @@
 {
   "compilerOptions": {
+    // dir
+    "baseUrl": ".",
+    "rootDirs": ["src", "test"],
+    "outDir": "dist",
+    // compilation
+    "composite": true,
+    "incremental": true,
+    // module resolution
+    "target": "esnext",
     "module": "commonjs",
-    "target": "es5",
-    "noImplicitAny": true,
+    "lib": ["esnext"],
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    // transpile output
+    "declaration": true,
+    "declarationMap": true,
+    // decorator
+    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "rootDir": ".",
-    "declaration": true
-  },
-  "exclude": [
-    "node_modules",
-    "index.ts",
-    "main.d.ts",
-    "typings/browser.d.ts",
-    "typings/browser"
-  ]
+    // code quality
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "noFallthroughCasesInSwitch": true,
+    // "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    // "noUnusedParameters": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true
+  }
 }

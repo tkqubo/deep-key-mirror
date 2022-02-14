@@ -1,0 +1,28 @@
+---
+env:
+  es2020: true
+parser: '@typescript-eslint/parser'
+parserOptions:
+  project: ./tsconfig.json
+plugins:
+  - '@typescript-eslint'
+  - import
+extends:
+  - eslint:recommended
+  - plugin:@typescript-eslint/eslint-recommended
+  - plugin:@typescript-eslint/recommended
+  - plugin:import/recommended
+  - plugin:import/typescript
+  - prettier
+rules:
+  '@typescript-eslint/no-namespace': off
+  '@typescript-eslint/no-explicit-any': off
+  sort-imports: 0
+  import/order:
+    - error
+    - pathGroups:
+      - pattern: '@*'
+        group: external
+settings:
+  import/resolver:
+    typescript: {}
