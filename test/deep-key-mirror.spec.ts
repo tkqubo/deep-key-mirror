@@ -1,5 +1,5 @@
-import {deepEqual} from 'power-assert';
-import deepKeyMirror from '../src';
+import { deepEqual } from 'power-assert';
+import { deepKeyMirror } from '../src';
 import 'jest';
 
 // not an object nor an array
@@ -67,7 +67,7 @@ describe('deepKeyMirror', () => {
           boolean: true,
           number: 1,
           bigint: 42n,
-          symbol: symbol
+          symbol: symbol,
         };
         const actual = deepKeyMirror(obj);
         deepEqual(actual.null, 'null');
@@ -77,8 +77,6 @@ describe('deepKeyMirror', () => {
         deepEqual(actual.number, 'number');
         deepEqual(actual.bigint, 'bigint');
         deepEqual(actual.symbol, 'symbol');
-        // @ts-expect-error
-        deepKeyMirror(actual.nonExistingProperty);
       });
     });
 
@@ -98,26 +96,27 @@ describe('deepKeyMirror', () => {
         deepEqual(breakfastConfig.beverage.coffee, 'beverage.coffee');
         deepEqual(breakfastConfig.fruits.orange, 'fruits.orange');
         deepEqual(breakfastConfig.fruits.apple, 'fruits.apple');
+        // @ts-expect-error property nonExistingProperty does not exist and won't compile
+        deepKeyMirror(breakfastConfig.nonExistingProperty);
       });
 
       it('supplies path-concatenated prop name to its value', () => {
-        const actual = deepKeyMirror(
-          {
-            user: {
-              created: null,
-              updated: null,
-              deleted: null,
+        const actual = deepKeyMirror({
+          user: {
+            created: null,
+            updated: null,
+            deleted: null,
+          },
+          status: ['start', 'stop'],
+          other: {
+            fixed: 'other_value',
+            misc: {
+              miscA: null,
+              miscB: undefined,
+              miscZ: 'Z',
             },
-            status: ['start', 'stop'],
-            other: {
-              fixed: 'other_value',
-              misc: {
-                miscA: null,
-                miscB: undefined,
-                miscZ: 'Z',
-              },
-            },
-          });
+          },
+        });
         const expected = {
           user: {
             created: 'user.created',
@@ -149,7 +148,7 @@ describe('deepKeyMirror', () => {
         value: 'other_value',
         yetNested: {
           value: null,
-          array: ['a', 42]
+          array: ['a', 42],
         },
       },
     };
@@ -162,13 +161,13 @@ describe('deepKeyMirror', () => {
             yetNested: {
               value: 'nested.yetNested.value',
               array: {
-                'a': 'nested.yetNested.array.a',
+                a: 'nested.yetNested.array.a',
                 '42': 'nested.yetNested.array.42',
-              }
+              },
             },
           },
         };
-        const actual = deepKeyMirror(input, {retain: true});
+        const actual = deepKeyMirror(input, { retain: true });
         deepEqual(actual, expected);
       });
 
@@ -181,8 +180,8 @@ describe('deepKeyMirror', () => {
           boolean: true,
           number: 1,
           bigint: 42n,
-          symbol: symbol
-        }
+          symbol: symbol,
+        };
         const expected = {
           null: 'null',
           undefined: 'undefined',
@@ -190,9 +189,9 @@ describe('deepKeyMirror', () => {
           boolean: true,
           number: 1,
           bigint: 42n,
-          symbol: symbol
+          symbol: symbol,
         };
-        const actual = deepKeyMirror(input, {retain: true});
+        const actual = deepKeyMirror(input, { retain: true });
         deepEqual(actual, expected);
       });
 
@@ -204,13 +203,13 @@ describe('deepKeyMirror', () => {
             yetNested: {
               value: 'nested.yetNested.value',
               array: {
-                'a': 'nested.yetNested.array.a',
+                a: 'nested.yetNested.array.a',
                 '42': 'nested.yetNested.array.42',
-              }
+              },
             },
           },
         };
-        const actual = deepKeyMirror(input, {retain: false});
+        const actual = deepKeyMirror(input, { retain: false });
         deepEqual(actual, expected);
       });
     });
@@ -224,13 +223,13 @@ describe('deepKeyMirror', () => {
             yetNested: {
               value: 'nested_yetNested_value',
               array: {
-                'a': 'nested_yetNested_array_a',
+                a: 'nested_yetNested_array_a',
                 '42': 'nested_yetNested_array_42',
-              }
+              },
             },
           },
         };
-        const actual = deepKeyMirror(input, {joinString: '_'});
+        const actual = deepKeyMirror(input, { joinString: '_' });
         deepEqual(actual, expected);
       });
     });
@@ -244,13 +243,13 @@ describe('deepKeyMirror', () => {
             yetNested: {
               value: 'NESTED.YETNESTED.VALUE',
               array: {
-                'a': 'NESTED.YETNESTED.ARRAY.A',
+                a: 'NESTED.YETNESTED.ARRAY.A',
                 '42': 'NESTED.YETNESTED.ARRAY.42',
-              }
+              },
             },
           },
         };
-        const actual = deepKeyMirror( input, {upperCase: true});
+        const actual = deepKeyMirror(input, { upperCase: true });
         deepEqual(actual, expected);
       });
     });

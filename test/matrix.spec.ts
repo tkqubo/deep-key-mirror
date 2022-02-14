@@ -1,5 +1,5 @@
-import {deepEqual, equal} from 'power-assert';
-import {matrix} from '../src';
+import { deepEqual, equal } from 'power-assert';
+import { matrix } from '../src';
 import 'jest';
 
 describe('matrix', () => {
@@ -15,11 +15,10 @@ describe('matrix', () => {
     });
   });
   it('processes 2 string array', () => {
-    const actual = matrix(
-      [
-        ['company', 'individual'],
-        ['engineer', 'designer', 'manager'],
-      ]);
+    const actual = matrix([
+      ['company', 'individual'],
+      ['engineer', 'designer', 'manager'],
+    ]);
     const expected = {
       company: {
         engineer: 'company.engineer',
@@ -41,7 +40,7 @@ describe('matrix', () => {
         ['get', 'getList', 'post', 'put', 'delete'],
         ['request', 'success', 'failure'],
       ],
-      {joinString: '_', upperCase: true},
+      { joinString: '_', upperCase: true },
     );
     equal(actual.user.get.request, 'USER_GET_REQUEST');
     equal(actual.user.delete.success, 'USER_DELETE_SUCCESS');

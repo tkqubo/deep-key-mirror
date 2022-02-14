@@ -23,7 +23,7 @@ Returns a new object that has values equal to its property names in the given ob
 ```ts
 import deepKeyMirror from 'deep-key-mirror';
 
-deepKeyMirror({null: '', age: null}); // { name: 'name', age: 'age' }
+deepKeyMirror({ null: '', age: null }); // { name: 'name', age: 'age' }
 ```
 
 If the given object has child arrays or objects, they are also "key-mirrored" recursively, with the `.`-concatenated
@@ -68,9 +68,9 @@ Converts an two-dimensional dimensional array into an object with an isomorphic 
 
 ```js
 const restApi = matrix([
-    ['user', 'team', 'group'],
-    ['get', 'getList', 'post', 'put', 'delete'],
-    ['request', 'success', 'failure'],
+  ['user', 'team', 'group'],
+  ['get', 'getList', 'post', 'put', 'delete'],
+  ['request', 'success', 'failure'],
 ]);
 /*
  restApi === {
@@ -103,27 +103,27 @@ const restApi = matrix([
 
 Both `deepKeyMirror` and `matrix` can take `config` object as a second argument, which has these three options
 
-| prop         | type    | default | description                                                                         |
-| :----------- | :------ | :------ |:------------------------------------------------------------------------------------|
+| prop         | type    | default | description                                                                             |
+| :----------- | :------ | :------ | :-------------------------------------------------------------------------------------- |
 | `retain`     | boolean | false   | When set to `true`, primitive values other than `null` or `undefined` won't be replaced |
-| `joinString` | string  | `'.'`   | Separator for joining object paths.                                                 |
-| `upperCase`  | boolean | false   | When set to `true`, values will be mirrored with uppercase.                         |
+| `joinString` | string  | `'.'`   | Separator for joining object paths.                                                     |
+| `upperCase`  | boolean | false   | When set to `true`, values will be mirrored with uppercase.                             |
 
 #### examples
 
 ```js
 const props = {
-    color: {
-        red: null,
-        green: null,
-        blue: 'not_an_yellow',
-        other: {
-            brown: 'maroon',
-        },
+  color: {
+    red: null,
+    green: null,
+    blue: 'not_an_yellow',
+    other: {
+      brown: 'maroon',
     },
+  },
 };
 
-const propConfig = deepKeyMirror(props, {prependKeyPath: true});
+const propConfig = deepKeyMirror(props, { prependKeyPath: true });
 /*
 propConfig = {
   color: {
@@ -137,7 +137,7 @@ propConfig = {
 };
 */
 
-const propConfig = deepKeyMirror(props, {prependKeyPath: false});
+const propConfig = deepKeyMirror(props, { prependKeyPath: false });
 /*
 propConfig = {
   color: {
@@ -151,7 +151,7 @@ propConfig = {
 };
 */
 
-const propConfig = deepKeyMirror(props, {keyJoinString: '-'});
+const propConfig = deepKeyMirror(props, { keyJoinString: '-' });
 /*
 propConfig = {
   color: {
@@ -165,7 +165,7 @@ propConfig = {
 };
 */
 
-const propConfig = deepKeyMirror(props, {makeUpperCase: true});
+const propConfig = deepKeyMirror(props, { makeUpperCase: true });
 /*
 propConfig = {
   color: {

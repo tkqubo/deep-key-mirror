@@ -6,5 +6,5 @@ import { Config, Mirrored } from './model';
  * @param config
  * @returns {any}
  */
-export default function deepKeyMirror<T>(obj: T, config?: Config): Mirrored<T>;
+export declare function deepKeyMirror<T>(obj: T, config?: Config): Mirrored<T>;
 //# sourceMappingURL=deep-key-mirror.d.ts.map

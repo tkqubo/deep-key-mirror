@@ -1,6 +1,6 @@
-import {Config} from './model';
-import {isArray, isDefined} from './utils';
-import deepKeyMirror from './deep-key-mirror';
+import { Config } from './model';
+import { isArray, isDefined } from './utils';
+import { deepKeyMirror } from './deep-key-mirror';
 
 /**
  * Creates an isomorphic and recursive key-value structure.
@@ -20,7 +20,7 @@ export function matrix(keyMap: string[][] | null | undefined, config?: Config): 
     matrix = keys.reduce(
       (prev, curr) => ({
         ...prev,
-        [curr]: isArray(matrix) ? [...matrix] : {...matrix}
+        [curr]: isArray(matrix) ? [...matrix] : { ...matrix },
       }),
       {} as object,
     );

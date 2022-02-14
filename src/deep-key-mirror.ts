@@ -1,5 +1,5 @@
-import {Config, defaultConfig, Mirrored} from './model';
-import {isDefined, isFunction, isPrimitive} from './utils';
+import { Config, defaultConfig, Mirrored } from './model';
+import { isDefined, isFunction, isPrimitive } from './utils';
 
 /**
  * Constructs an enumeration with keys equal to their value.
@@ -8,7 +8,7 @@ import {isDefined, isFunction, isPrimitive} from './utils';
  * @param config
  * @returns {any}
  */
-export default function deepKeyMirror<T>(obj: T, config?: Config): Mirrored<T> {
+export function deepKeyMirror<T>(obj: T, config?: Config): Mirrored<T> {
   return doDeepKeyMirror(obj, [], { ...defaultConfig, ...config });
 }
 
@@ -30,20 +30,21 @@ function doDeepKeyMirror(obj: any, paths: string[], config: Config): any {
   }
 
   if (obj instanceof Array) {
-    return obj
-      .reduce((prev, curr) =>
-                ({...prev, [curr]: joinPaths(paths.concat(String(curr)), config)}),
-              {} as object
-      );
+    return obj.reduce(
+      (prev, curr) => ({ ...prev, [curr]: joinPaths(paths.concat(String(curr)), config) }),
+      {} as object,
+    );
   }
 
   // object
   return Object.entries(obj).reduce(
     (prev, [prop, value]) => ({
       ...prev,
-      [prop]: isDefined(value) ? doDeepKeyMirror(value, paths.concat(prop), config) : joinPaths(paths.concat(prop), config)
+      [prop]: isDefined(value)
+        ? doDeepKeyMirror(value, paths.concat(prop), config)
+        : joinPaths(paths.concat(prop), config),
     }),
-    {} as object
+    {} as object,
   );
 }
 
