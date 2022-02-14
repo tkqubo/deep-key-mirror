@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/deep-key-mirror.svg)](http://badge.fury.io/js/deep-key-mirror)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
-[![Deep Key Mirror CI](https://github.com/tkqubo/deep-key-mirror/actions/workflows/build.yml/badge.svg)](https://github.com/tkqubo/deep-key-mirror/actions/workflows/build.yml)
+[![CI](https://github.com/tkqubo/deep-key-mirror/actions/workflows/build.yml/badge.svg)](https://github.com/tkqubo/deep-key-mirror/actions/workflows/build.yml)
 
 Alternative to React's [keyMirror](https://github.com/STRML/keyMirror) which further mirrors properties deep inside the
 object graph.
@@ -125,59 +125,53 @@ const props = {
   },
 };
 
-deepEqual(
-  deepKeyMirror(props, {retain: true}),
-  {
-    color: {
-      red: 'color.red',
-      green: 42,
-      blue: 'color.not_an_yellow',
-      other: {
-        brown: 'color.other.maroon',
-        darkness: {
-          '1': 1,
-          bright: 'color.other.darkness.bright',
-          false: false
-        }
-      }
-    }
-  });
+deepEqual(deepKeyMirror(props, { retain: true }), {
+  color: {
+    red: 'color.red',
+    green: 42,
+    blue: 'color.not_an_yellow',
+    other: {
+      brown: 'color.other.maroon',
+      darkness: {
+        '1': 1,
+        bright: 'color.other.darkness.bright',
+        false: false,
+      },
+    },
+  },
+});
 
-deepEqual(
-  deepKeyMirror(props, {joinString: '-'}),
-  {
-    color: {
-      red: 'color-red',
-      green: 'color-green',
-      blue: 'color-blue',
-      other: {
-        brown: 'color-other-brown',
-        darkness: {
-          '1': 'color-other-darkness-1',
-          bright: 'color-other-darkness-bright',
-          false: 'color-other-darkness-false'
-        }
-      }
-    }
-  });
+deepEqual(deepKeyMirror(props, { joinString: '-' }), {
+  color: {
+    red: 'color-red',
+    green: 'color-green',
+    blue: 'color-blue',
+    other: {
+      brown: 'color-other-brown',
+      darkness: {
+        '1': 'color-other-darkness-1',
+        bright: 'color-other-darkness-bright',
+        false: 'color-other-darkness-false',
+      },
+    },
+  },
+});
 
-deepEqual(
-  deepKeyMirror(props, {upperCase: true}),
-  {
-    color: {
-      red: 'COLOR.RED',
-      green: 'COLOR.GREEN',
-      blue: 'COLOR.BLUE',
-      other: {
-        brown: 'COLOR.OTHER.BROWN',
-        darkness: {
-          '1': 'COLOR.OTHER.DARKNESS.1',
-          bright: 'COLOR.OTHER.DARKNESS.BRIGHT',
-          false: 'COLOR.OTHER.DARKNESS.FALSE'
-        }
-      }
-    }
-  });
+deepEqual(deepKeyMirror(props, { upperCase: true }), {
+  color: {
+    red: 'COLOR.RED',
+    green: 'COLOR.GREEN',
+    blue: 'COLOR.BLUE',
+    other: {
+      brown: 'COLOR.OTHER.BROWN',
+      darkness: {
+        '1': 'COLOR.OTHER.DARKNESS.1',
+        bright: 'COLOR.OTHER.DARKNESS.BRIGHT',
+        false: 'COLOR.OTHER.DARKNESS.FALSE',
+      },
+    },
+  },
+});
 ```
 
 ## TypeScript

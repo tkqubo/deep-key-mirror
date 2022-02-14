@@ -9,7 +9,7 @@
     "build": "npm run build:tsc && npm run lint && npm run docs",
     "build:tsc": "npm run clean && tsc",
     "start": "npm run build",
-    "test": "npm run build && npm run test:jest:cov",
+    "test": "npm run build && npm run test:jest",
     "test:jest": "jest",
     "test:jest:cov": "jest --coverage --force-exit --detectOpenHandles",
     "test:jest:watch": "jest --watch --detectOpenHandles",

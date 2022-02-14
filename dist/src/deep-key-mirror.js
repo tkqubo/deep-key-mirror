@@ -30,7 +30,7 @@ function doDeepKeyMirror(obj, paths, config) {
         }
     }
     if (obj instanceof Array) {
-        return obj.reduce((prev, curr) => ({ ...prev, [curr]: doDeepKeyMirror(curr, paths, config) }), {});
+        return obj.reduce((prev, curr) => ({ ...prev, [curr]: doDeepKeyMirror(curr, paths.concat(String(curr)), config) }), {});
     }
     // object
     return Object.entries(obj).reduce((prev, [prop, value]) => ({
