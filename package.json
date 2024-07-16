@@ -1,6 +1,6 @@
 {
   "name": "deep-key-mirror",
-  "version": "0.5.5",
+  "version": "0.6.0",
   "description": "Alternative to React keyMirror",
   "main": "./dist/src/index.js",
   "types": "./dist/src/index.d.ts",
@@ -30,8 +30,6 @@
   },
   "keywords": [
     "React",
-    "Flux",
-    "Redux",
     "TypeScript",
     "JavaScript",
     "es6"
