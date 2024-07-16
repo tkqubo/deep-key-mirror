@@ -1,8 +1,8 @@
 .idea
 .git*
-!dist
 node_modules
 src
+!dist/src
 test
 docs
 tsconfig.json
