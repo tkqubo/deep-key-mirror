@@ -1,8 +1,11 @@
 .idea
 .git*
+!dist
 node_modules
 src
 test
 docs
 tsconfig.json
 jest.config.*
+npm-debug.log*
+tsconfig.tsbuildinfo
