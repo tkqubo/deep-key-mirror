@@ -1,8 +1,5 @@
 .idea
-
 node_modules
 coverage
-dist
 docs
-
 npm-debug.log*
