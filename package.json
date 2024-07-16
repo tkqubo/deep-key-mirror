@@ -1,6 +1,6 @@
 {
   "name": "deep-key-mirror",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "description": "Alternative to React keyMirror",
   "main": "./dist/src/index.js",
   "types": "./dist/src/index.d.ts",
@@ -21,8 +21,7 @@
     "fix:eslint": "npm run lint:eslint --fix",
     "fix:prettier": "yarn lint:prettier --write",
     "docs": "typedoc --out docs --exclude '**/index.ts' src/ && touch docs/.nojekyll",
-    "docs:publish": "npm run docs && git push origin :gh-pages; git subtree push --prefix docs/ origin gh-pages",
-    "prepublish": "npm run build"
+    "docs:publish": "npm run docs && git push origin :gh-pages; git subtree push --prefix docs/ origin gh-pages"
   },
   "repository": {
     "type": "git",
@@ -59,5 +58,12 @@
     "ts-node": "^10.9.2",
     "typedoc": "^0.26.4",
     "typescript": "^5.5.3"
-  }
+  },
+  "files": [
+    "./dist/src",
+    "LICENSE",
+    "package.json",
+    "README.md",
+    "tsconfig.json"
+  ]
 }
