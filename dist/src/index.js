@@ -18,3 +18,4 @@ const deep_key_mirror_1 = require("./deep-key-mirror");
 __exportStar(require("./deep-key-mirror"), exports);
 __exportStar(require("./model"), exports);
 exports.default = deep_key_mirror_1.deepKeyMirror;
+//# sourceMappingURL=index.js.map

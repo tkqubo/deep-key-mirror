@@ -24,3 +24,4 @@ function doDeepKeyMirror(obj, paths) {
         [prop]: value != null ? doDeepKeyMirror(value, paths.concat(prop)) : paths.concat(prop).join('.'),
     }), {});
 }
+//# sourceMappingURL=deep-key-mirror.js.map
