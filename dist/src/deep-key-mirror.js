@@ -1,45 +1,26 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deepKeyMirror = void 0;
-const model_1 = require("./model");
-const utils_1 = require("./utils");
+exports.deepKeyMirror = deepKeyMirror;
 /**
  * Constructs an enumeration with keys equal to their value.
  *
  * @param obj
- * @param config
  * @returns {any}
  */
-function deepKeyMirror(obj, config) {
-    return doDeepKeyMirror(obj, [], { ...model_1.defaultConfig, ...config });
+function deepKeyMirror(obj) {
+    return doDeepKeyMirror(obj, []);
 }
-exports.deepKeyMirror = deepKeyMirror;
-function doDeepKeyMirror(obj, paths, config) {
-    if (!(0, utils_1.isDefined)(obj) || (0, utils_1.isFunction)(obj)) {
-        return obj;
-    }
-    if (typeof obj === 'string' && config.retain) {
-        return joinPaths(paths.slice(0, -1).concat(obj), config);
-    }
-    if ((0, utils_1.isPrimitive)(obj)) {
-        if (config.retain || paths.length === 0) {
-            return obj;
-        }
-        else {
-            return joinPaths(paths, config);
-        }
+function doDeepKeyMirror(obj, paths) {
+    if (obj == null || typeof obj === 'string') {
+        return paths.join('.');
     }
     if (obj instanceof Array) {
-        return obj.reduce((prev, curr) => ({ ...prev, [curr]: doDeepKeyMirror(curr, paths.concat(String(curr)), config) }), {});
+        const indexer = (i) => paths.length ? paths.slice(0, paths.length - 1).concat([`${paths.slice(-1)[0]}[${i}]`]) : [];
+        return obj.map((value, i) => doDeepKeyMirror(value, indexer(i)));
     }
     // object
     return Object.entries(obj).reduce((prev, [prop, value]) => ({
         ...prev,
-        [prop]: (0, utils_1.isDefined)(value)
-            ? doDeepKeyMirror(value, paths.concat(prop), config)
-            : joinPaths(paths.concat(prop), config),
+        [prop]: value != null ? doDeepKeyMirror(value, paths.concat(prop)) : paths.concat(prop).join('.'),
     }), {});
-}
-function joinPaths(paths, config) {
-    return paths.map(key => (config.upperCase ? key.toUpperCase() : key)).join(config.joinString);
 }

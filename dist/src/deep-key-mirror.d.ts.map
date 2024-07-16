@@ -1,1 +1,1 @@
-{"version":3,"file":"deep-key-mirror.d.ts","sourceRoot":"","sources":["../../src/deep-key-mirror.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,MAAM,EAAiB,QAAQ,EAAE,MAAM,SAAS,CAAC;AAG1D;;;;;;GAMG;AACH,wBAAgB,aAAa,CAAC,CAAC,EAAE,GAAG,EAAE,CAAC,EAAE,MAAM,CAAC,EAAE,MAAM,GAAG,QAAQ,CAAC,CAAC,CAAC,CAErE"}
+{"version":3,"file":"deep-key-mirror.d.ts","sourceRoot":"","sources":["../../src/deep-key-mirror.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,QAAQ,EAAE,GAAG,EAAY,MAAM,SAAS,CAAC;AAElD;;;;;GAKG;AACH,wBAAgB,aAAa,CAAC,CAAC,SAAS,GAAG,EAAE,GAAG,EAAE,CAAC,GAAG,QAAQ,CAAC,CAAC,CAAC,CAEhE"}

@@ -1,44 +1,16 @@
-/**
- * Configuration for `deepKeyMirror`
- */
-export interface Config {
-  retain?: boolean;
-  joinString?: string;
-  upperCase?: boolean;
-}
+export type Obj = { [key: string]: ObjValue };
 
-/**
- * Default `Config` instance
- * ```ts
- * {
- *   retain: false,
- *   joinString: '.',
- *   upperCase: false
- * }
- * ```
- * @type {{retain: boolean, joinString: string, upperCase: boolean}}
- */
-export const defaultConfig: Readonly<Config> = {
-  retain: false,
-  joinString: '.',
-  upperCase: false,
-};
+export type ObjValue = null | undefined | string | null[] | undefined[] | string[] | Obj | Obj[];
+
+type Join<Prefix extends string, Key> = Key extends string ? (Prefix extends '' ? Key : `${Prefix}.${Key}`) : never;
 
 // prettier-ignore
-export type Mirrored<T> =
-  T extends Primitive | Fn ? T :
-    T extends ArrayLike ? any :
-      MirroredProperty<T>;
+type MirroredInternal<T extends ObjValue, Current extends string = ''> =
+  T extends string | null | undefined ? Current :
+  T extends Obj ? { [K in keyof T]: MirroredInternal<T[K], Join<Current, K>>; } :
+  T extends (infer U)[] & { length: infer L } ?
+    U extends null | undefined | string | ObjValue ? MirroredInternal<U, `${Current}[${number}]`>[] & { length: L } :
+    never :
+  never;
 
-// prettier-ignore
-export type MirroredProperty<T> =
-  T extends Primitive ? string
-    : T extends Fn ? T
-      : T extends ArrayLike ? any
-        : { [K in keyof T]: MirroredProperty<T[K]> };
-
-export type Fn = (...args: any[]) => any;
-
-export type ArrayLike = any[] | ReadonlyArray<any>;
-
-export type Primitive = string | number | bigint | boolean | symbol | null | undefined;
+export type Mirrored<T extends Obj> = MirroredInternal<T, ''>;
