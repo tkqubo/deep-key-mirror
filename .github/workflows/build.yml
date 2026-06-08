@@ -13,14 +13,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-
       - name: Use Node.js 22.x
         uses: actions/setup-node@v4
         with:
-          node-version: 22.x
-          cache: pnpm
+          node-version: 22
+
+      - name: Enable Corepack (pnpm)
+        run: corepack enable
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
