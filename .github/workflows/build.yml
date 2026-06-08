@@ -5,17 +5,34 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-      - name: Use Node.js 16.x
-        uses: actions/setup-node@v2
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Use Node.js 22.x
+        uses: actions/setup-node@v4
         with:
-          node-version: 16.x
+          node-version: 22.x
+          cache: pnpm
 
-      - name: Build & Test
-        run: npm install && npm run test
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Type check
+        run: pnpm typecheck
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Build
+        run: pnpm build
+
+      - name: Test
+        run: pnpm test

@@ -2,27 +2,31 @@
   "name": "deep-key-mirror",
   "version": "0.6.0",
   "description": "Alternative to React keyMirror",
-  "main": "./dist/src/index.js",
-  "types": "./dist/src/index.d.ts",
-  "esnext": "./dist/src/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "packageManager": "pnpm@11.1.1",
+  "engines": {
+    "node": ">=22.13.0",
+    "pnpm": ">=11"
+  },
   "scripts": {
     "clean": "rm -rfv dist",
-    "build": "npm run build:tsc && npm run lint && npm run docs",
-    "build:tsc": "npm run clean && tsc",
-    "start": "npm run build",
-    "test": "npm run build && npm run test:jest",
-    "test:jest": "jest",
-    "test:jest:cov": "jest --coverage --force-exit --detectOpenHandles",
-    "test:jest:watch": "jest --watch --detectOpenHandles",
-    "lint": "npm run lint:eslint && npm run lint:prettier",
-    "lint:eslint": "eslint .",
-    "lint:prettier": "prettier --check .",
-    "fix": "npm run fix:eslint && npm run fix:prettier",
-    "fix:eslint": "npm run lint:eslint --fix",
-    "fix:prettier": "yarn lint:prettier --write",
+    "build": "pnpm clean && tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check",
+    "fix": "biome check --write",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:cov": "vitest run --coverage",
     "docs": "typedoc --out docs --exclude '**/index.ts' src/ && touch docs/.nojekyll",
-    "docs:publish": "npm run docs && git push origin :gh-pages; git subtree push --prefix docs/ origin gh-pages",
-    "prepublish": "npm run build"
+    "docs:publish": "pnpm docs && git push origin :gh-pages; git subtree push --prefix docs/ origin gh-pages",
+    "prepublishOnly": "pnpm build"
   },
   "repository": {
     "type": "git",
@@ -41,25 +45,14 @@
   },
   "homepage": "https://github.com/tkqubo/deep-key-mirror",
   "devDependencies": {
-    "@types/jest": "^29.5.12",
-    "@types/power-assert": "^1.5.12",
-    "@typescript-eslint/eslint-plugin": "^7.16.1",
-    "@typescript-eslint/parser": "^7.16.1",
-    "eslint": "^8.57.0",
-    "eslint-config-prettier": "^8.10.0",
-    "eslint-import-resolver-typescript": "^3.6.1",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-prettier": "^5.1.3",
-    "jest": "^29.7.0",
-    "power-assert": "^1.6.1",
-    "prettier": "^3.3.3",
-    "ts-jest": "^29.2.2",
-    "ts-node": "^10.9.2",
-    "typedoc": "^0.26.4",
-    "typescript": "^5.5.3"
+    "@biomejs/biome": "^2.0.0",
+    "@vitest/coverage-v8": "^3.2.0",
+    "typedoc": "^0.28.19",
+    "typescript": "^6.0.3",
+    "vitest": "^3.2.0"
   },
   "files": [
-    "./dist/src",
+    "dist",
     "LICENSE",
     "package.json",
     "README.md",
