@@ -1,8 +1,11 @@
 # Deep Key Mirror
 
-[![npm version](https://badge.fury.io/js/deep-key-mirror.svg)](http://badge.fury.io/js/deep-key-mirror)
-[![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
-[![CI](https://github.com/tkqubo/deep-key-mirror/actions/workflows/build.yml/badge.svg)](https://github.com/tkqubo/deep-key-mirror/actions/workflows/build.yml)
+[![npm version](https://img.shields.io/npm/v/deep-key-mirror?style=flat-square&logo=npm&color=CB3837)](https://www.npmjs.com/package/deep-key-mirror)
+[![npm downloads](https://img.shields.io/npm/dm/deep-key-mirror?style=flat-square&logo=npm&color=CB3837)](https://www.npmjs.com/package/deep-key-mirror)
+[![CI](https://img.shields.io/github/actions/workflow/status/tkqubo/deep-key-mirror/build.yml?style=flat-square&logo=githubactions&logoColor=white&label=CI)](https://github.com/tkqubo/deep-key-mirror/actions/workflows/build.yml)
+[![Bundle size](https://img.shields.io/bundlephobia/minzip/deep-key-mirror?style=flat-square&label=minzip)](https://bundlephobia.com/package/deep-key-mirror)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![License: MIT](https://img.shields.io/npm/l/deep-key-mirror?style=flat-square&color=blue)](./LICENSE)
 
 Alternative to React's [keyMirror](https://github.com/STRML/keyMirror) which further mirrors properties deep inside the
 object graph.
