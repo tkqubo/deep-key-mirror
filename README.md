@@ -20,20 +20,29 @@ npm install deep-key-mirror
 
 ### `deepKeyMirror(obj)`
 
-Returns a new object that has values equal to its property names in the given object.
+Returns a new object whose values equal the `.`-joined property paths in the given object.
 
 #### Simple example
 
 ```ts
 import deepKeyMirror from 'deep-key-mirror';
 
-deepKeyMirror({ null: '', age: null }); // { name: 'name', age: 'age' }
+deepKeyMirror({ name: null, age: null }); // { name: 'name', age: 'age' }
 ```
 
-If the given object has child arrays or objects, they are also "key-mirrored" recursively, with the `.`-concatenated
-paths from the root object assigned to each of their value.
+#### String arrays
+
+A **string array** is mirrored into an object keyed by its elements:
+
+```ts
+deepKeyMirror(['apple', 'banana', 'grape']);
+// { apple: 'apple', banana: 'banana', grape: 'grape' }
+```
 
 #### Nested example
+
+Child objects and string arrays are mirrored recursively, with the `.`-joined paths from the root assigned to each
+value. (An array containing **objects** keeps the index-path behaviour instead, e.g. `items[0].name`.)
 
 ```ts
 import deepKeyMirror from 'deep-key-mirror';
@@ -45,7 +54,7 @@ const breakfast = {
     coffee: null,
     beer: 'BEER!',
   },
-  fruits: [{ name: 'orange' }, { name: 'apple' }],
+  fruits: ['orange', 'apple'],
 };
 const mirrored = deepKeyMirror(breakfast);
 /*
@@ -54,15 +63,27 @@ mirrored === {
   beverage: {
     milk: 'beverage.milk',
     coffee: 'beverage.coffee',
-    beer: 'beverage.beer'
+    beer: 'beverage.beer',
   },
-  fruits: [
-    { name: 'fruits[0].name' },
-    { name: 'fruits[1].name' },
-  ]
+  fruits: {
+    orange: 'fruits.orange',
+    apple: 'fruits.apple',
+  },
 }
 */
 ```
+
+#### Literal types
+
+The return type is inferred as **literal types** when the argument is an inline literal (or annotated `as const`):
+
+```ts
+const keys = deepKeyMirror(['apple', 'banana']);
+//    ^? { apple: 'apple'; banana: 'banana' }
+```
+
+When you pass a pre-declared variable, its array elements widen to `string[]`, so use an inline literal or `as const`
+to retain literal keys.
 
 ## TypeScript
 

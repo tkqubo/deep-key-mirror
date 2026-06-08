@@ -1,6 +1,6 @@
 {
   "name": "deep-key-mirror",
-  "version": "0.6.1",
+  "version": "0.7.0",
   "description": "Alternative to React keyMirror",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

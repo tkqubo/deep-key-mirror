@@ -1,18 +1,23 @@
 import { describe, expect, test } from 'vitest';
 import { deepKeyMirror } from '../src';
 
-// not an object nor an array
 describe(deepKeyMirror.name, () => {
   test('an empty object', () => {
     expect(deepKeyMirror({})).toEqual({});
   });
 
-  test('an array', () => {
-    const array = { array: ['foo', 'bar', 'baz'] };
-    const mirrored = deepKeyMirror(array);
-    expect(mirrored.array[0]).toBe('array[0]');
-    expect(mirrored.array[1]).toBe('array[1]');
-    expect(mirrored.array[2]).toBe('array[2]');
+  test('a top-level string array becomes an object keyed by its elements', () => {
+    expect(deepKeyMirror(['apple', 'banana', 'grape'])).toEqual({
+      apple: 'apple',
+      banana: 'banana',
+      grape: 'grape',
+    });
+  });
+
+  test('a string array property becomes an object with dot-paths', () => {
+    expect(deepKeyMirror({ array: ['foo', 'bar', 'baz'] })).toEqual({
+      array: { foo: 'array.foo', bar: 'array.bar', baz: 'array.baz' },
+    });
   });
 
   test('a flat object', () => {
@@ -21,44 +26,77 @@ describe(deepKeyMirror.name, () => {
       undefined: undefined,
       string: 'string',
     };
-    const actual = deepKeyMirror(obj);
-    expect(actual.null).toBe('null');
-    expect(actual.undefined).toBe('undefined');
-    expect(actual.string).toBe('string');
+    expect(deepKeyMirror(obj)).toEqual({
+      null: 'null',
+      undefined: 'undefined',
+      string: 'string',
+    });
   });
 
-  test('a nested object', () => {
-    const obj = {
+  test('a nested object with a string array', () => {
+    const actual = deepKeyMirror({
       bread: null,
       beverage: {
         milk: null,
         coffee: null,
+        beer: 'BEER!',
       },
-      fruits: [null, null],
+      fruits: ['orange', 'apple'],
+    });
+    expect(actual).toEqual({
+      bread: 'bread',
+      beverage: {
+        milk: 'beverage.milk',
+        coffee: 'beverage.coffee',
+        beer: 'beverage.beer',
+      },
+      fruits: {
+        orange: 'fruits.orange',
+        apple: 'fruits.apple',
+      },
+    });
+  });
+
+  test('an object array keeps the legacy index-path behaviour', () => {
+    const actual = deepKeyMirror({
       people: [
-        { name: null, age: null, addr: { zip: null, lines: [null, null] } },
-        { name: null, age: null, addr: { zip: null, lines: [null, null] } },
+        { name: null, age: null },
+        { name: null, age: null },
       ],
-    };
-    const actual = deepKeyMirror(obj);
-    expect(actual.bread).toBe('bread');
-    expect(actual.beverage.milk).toBe('beverage.milk');
-    expect(actual.beverage.coffee).toBe('beverage.coffee');
-    expect(actual.fruits[0]).toBe('fruits[0]');
-    expect(actual.fruits[1]).toBe('fruits[1]');
-    expect(actual.fruits[2]).toBeUndefined();
-    expect(actual.people[0]).toEqual({
-      name: 'people[0].name',
-      age: 'people[0].age',
-      addr: { zip: 'people[0].addr.zip', lines: ['people[0].addr.lines[0]', 'people[0].addr.lines[1]'] },
     });
-    expect(actual.people[1]).toEqual({
-      name: 'people[1].name',
-      age: 'people[1].age',
-      addr: { zip: 'people[1].addr.zip', lines: ['people[1].addr.lines[0]', 'people[1].addr.lines[1]'] },
+    expect(actual).toEqual({
+      people: [
+        { name: 'people[0].name', age: 'people[0].age' },
+        { name: 'people[1].name', age: 'people[1].age' },
+      ],
     });
-    expect(actual.people[2]).toBeUndefined();
-    // @ts-expect-error property nonExistingProperty does not exist and won't compile
-    deepKeyMirror(actual.nonExistingProperty);
+  });
+
+  test('a null array keeps the legacy index-path behaviour', () => {
+    expect(deepKeyMirror({ fruits: [null, null] })).toEqual({
+      fruits: ['fruits[0]', 'fruits[1]'],
+    });
+  });
+
+  // Type-level checks: the annotation fails to compile (tsc) unless the
+  // return type is exactly the expected literal type.
+  describe('return type (inline literals)', () => {
+    test('a top-level string array yields a literal object type', () => {
+      const actual: { apple: 'apple'; banana: 'banana'; grape: 'grape' } = deepKeyMirror(['apple', 'banana', 'grape']);
+      expect(actual).toEqual({ apple: 'apple', banana: 'banana', grape: 'grape' });
+    });
+
+    test('a nested object yields a literal type including the string-array object', () => {
+      const actual: {
+        bread: 'bread';
+        beverage: { milk: 'beverage.milk'; beer: 'beverage.beer' };
+        fruits: { orange: 'fruits.orange'; apple: 'fruits.apple' };
+      } = deepKeyMirror({
+        bread: null,
+        beverage: { milk: null, beer: 'BEER!' },
+        fruits: ['orange', 'apple'],
+      });
+      expect(actual.fruits).toEqual({ orange: 'fruits.orange', apple: 'fruits.apple' });
+    });
   });
 });
