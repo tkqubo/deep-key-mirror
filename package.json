@@ -17,7 +17,7 @@
   },
   "scripts": {
     "clean": "rm -rfv dist",
-    "build": "pnpm clean && tsc -p tsconfig.build.json",
+    "build": "pnpm run clean && tsc -p tsconfig.build.json",
     "typecheck": "tsc --noEmit",
     "lint": "biome check",
     "fix": "biome check --write",
@@ -25,8 +25,8 @@
     "test:watch": "vitest",
     "test:cov": "vitest run --coverage",
     "docs": "typedoc --out docs --exclude '**/index.ts' src/ && touch docs/.nojekyll",
-    "docs:publish": "pnpm docs && git push origin :gh-pages; git subtree push --prefix docs/ origin gh-pages",
-    "prepublishOnly": "pnpm build"
+    "docs:publish": "pnpm run docs && gh-pages -d docs --dotfiles",
+    "prepublishOnly": "pnpm run build"
   },
   "repository": {
     "type": "git",
@@ -47,6 +47,7 @@
   "devDependencies": {
     "@biomejs/biome": "^2.0.0",
     "@vitest/coverage-v8": "^4.1.0",
+    "gh-pages": "^6.0.0",
     "typedoc": "^0.28.19",
     "typescript": "^6.0.3",
     "vitest": "^4.1.0"
