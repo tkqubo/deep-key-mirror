@@ -2,6 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/deep-key-mirror?style=flat-square&logo=npm&color=CB3837)](https://www.npmjs.com/package/deep-key-mirror)
 [![CI](https://img.shields.io/github/actions/workflow/status/tkqubo/deep-key-mirror/build.yml?style=flat-square&logo=githubactions&logoColor=white&label=CI)](https://github.com/tkqubo/deep-key-mirror/actions/workflows/build.yml)
+[![codecov](https://img.shields.io/codecov/c/github/tkqubo/deep-key-mirror?style=flat-square&logo=codecov&logoColor=white)](https://codecov.io/gh/tkqubo/deep-key-mirror)
 [![Bundle size](https://img.shields.io/bundlejs/size/deep-key-mirror?style=flat-square&label=minzip)](https://bundlejs.com/?q=deep-key-mirror)
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/npm/l/deep-key-mirror?style=flat-square&color=blue)](./LICENSE)

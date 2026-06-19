@@ -3,8 +3,8 @@
     // module resolution
     "target": "es2022",
     "lib": ["es2022"],
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
+    "module": "preserve",
+    "moduleResolution": "bundler",
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
@@ -19,8 +19,8 @@
     "noUnusedLocals": true,
     "noImplicitOverride": true,
     "noImplicitReturns": true,
-    // type-check only; emit is configured in tsconfig.build.json
+    // type-check only; the build artifacts are emitted by tsdown
     "noEmit": true
   },
-  "include": ["src", "test", "vitest.config.ts"]
+  "include": ["src", "test", "vitest.config.ts", "tsdown.config.ts"]
 }

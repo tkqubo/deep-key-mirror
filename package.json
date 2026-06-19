@@ -2,22 +2,30 @@
   "name": "deep-key-mirror",
   "version": "0.7.0",
   "description": "Alternative to React keyMirror",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
+  "sideEffects": false,
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
     }
   },
   "packageManager": "pnpm@11.1.1",
   "engines": {
-    "node": ">=22.13.0",
-    "pnpm": ">=11"
+    "node": ">=18"
   },
   "scripts": {
     "clean": "rm -rfv dist",
-    "build": "pnpm run clean && tsc -p tsconfig.build.json",
+    "build": "tsdown",
     "typecheck": "tsc --noEmit",
     "lint": "biome check",
     "fix": "biome check --write",
@@ -33,10 +41,15 @@
     "url": "git+https://github.com/tkqubo/deep-key-mirror.git"
   },
   "keywords": [
-    "React",
-    "TypeScript",
-    "JavaScript",
-    "es6"
+    "keymirror",
+    "key-mirror",
+    "deep-key-mirror",
+    "constants",
+    "enum",
+    "mirror",
+    "object-keys",
+    "typescript",
+    "react"
   ],
   "author": "tkqubo",
   "license": "MIT",
@@ -48,15 +61,12 @@
     "@biomejs/biome": "^2.0.0",
     "@vitest/coverage-v8": "^4.1.0",
     "gh-pages": "^6.0.0",
+    "tsdown": "^0.22.3",
     "typedoc": "^0.28.19",
     "typescript": "^6.0.3",
     "vitest": "^4.1.0"
   },
   "files": [
-    "dist",
-    "LICENSE",
-    "package.json",
-    "README.md",
-    "tsconfig.json"
+    "dist"
   ]
 }
