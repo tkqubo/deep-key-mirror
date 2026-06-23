@@ -1,2 +1,7 @@
 allowBuilds:
   esbuild: true
+
+# Force a patched esbuild (transitive via vitest/vite); 0.27.x has a low-severity
+# dev-server advisory (GHSA, fixed in 0.28.1). esbuild ships only in devDeps.
+overrides:
+  esbuild: ^0.28.1
