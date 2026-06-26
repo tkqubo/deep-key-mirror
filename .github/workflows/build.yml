@@ -14,10 +14,6 @@ jobs:
   build:
     name: Build (Node ${{ matrix.node-version }})
     runs-on: ubuntu-latest
-    # id-token lets codecov-action authenticate via OIDC (tokenless upload).
-    permissions:
-      contents: read
-      id-token: write
     strategy:
       fail-fast: false
       matrix:
@@ -53,7 +49,7 @@ jobs:
         if: matrix.node-version == 22
         uses: codecov/codecov-action@v5
         with:
-          use_oidc: true
+          token: ${{ secrets.CODECOV_TOKEN }}
           files: ./coverage/lcov.info
           fail_ci_if_error: false
 
