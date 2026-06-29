@@ -30,6 +30,12 @@ import deepKeyMirror from 'deep-key-mirror';
 deepKeyMirror({ name: null, age: null }); // { name: 'name', age: 'age' }
 ```
 
+The package ships both ESM and CommonJS builds. From CommonJS, reach the default export via `.default`:
+
+```js
+const deepKeyMirror = require('deep-key-mirror').default;
+```
+
 #### String arrays
 
 A **string array** is mirrored into an object keyed by its elements:
