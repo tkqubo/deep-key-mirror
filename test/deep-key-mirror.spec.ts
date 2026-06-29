@@ -78,6 +78,18 @@ describe(deepKeyMirror.name, () => {
     });
   });
 
+  test('a top-level object array has no parent path to index from', () => {
+    expect(
+      deepKeyMirror([
+        { name: null, age: null },
+        { name: null, age: null },
+      ]),
+    ).toEqual([
+      { name: 'name', age: 'age' },
+      { name: 'name', age: 'age' },
+    ]);
+  });
+
   // Type-level checks: the annotation fails to compile (tsc) unless the
   // return type is exactly the expected literal type.
   describe('return type (inline literals)', () => {
