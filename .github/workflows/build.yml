@@ -46,7 +46,8 @@ jobs:
         run: pnpm run test:cov
 
       - name: Upload coverage to Codecov
-        if: matrix.node-version == 22
+        # Dependabot PRs can't access secrets, so skip the token-based upload there.
+        if: matrix.node-version == 22 && github.actor != 'dependabot[bot]'
         uses: codecov/codecov-action@v7
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
