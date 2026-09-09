@@ -61,7 +61,7 @@
     "@biomejs/biome": "^2.0.0",
     "@vitest/coverage-v8": "^4.1.0",
     "gh-pages": "^6.0.0",
-    "tsdown": "^0.22.3",
+    "tsdown": "^0.23.0",
     "typedoc": "^0.28.19",
     "typescript": "^6.0.3",
     "vitest": "^4.1.0"
